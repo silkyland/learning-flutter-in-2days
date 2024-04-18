@@ -48,9 +48,9 @@ flutter run
 
 To verify that your Flutter setup is complete and working correctly, run the following command in your terminal or command prompt:
 
-    ```bash
-    flutter doctor
-    ```
+```bash
+flutter doctor
+```
 
 This command checks your environment and displays a report of the status of your Flutter installation. Make sure that no issues are reported.
 
