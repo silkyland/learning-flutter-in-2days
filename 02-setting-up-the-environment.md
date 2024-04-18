@@ -1,35 +1,65 @@
-# Setting up the environment
+# Setting up the Environment
 
-## Installation of Flutter SDK, Android Studio/VS Code, and Required Tools
+To start developing with Flutter, you need to set up your environment. This involves installing the necessary tools and configuring your system. Follow these steps to get started:
 
-1. **Download Flutter SDK**: You can download the Flutter SDK from the official Flutter website¹.
-2. **Install Flutter SDK**: Extract the downloaded zip file and place it in your desired location (for example, `C:\src\`)³.
-3. **Set Environment Variable**: Add the Flutter SDK path (for example, `C:\src\flutter\bin`) to your system's environment variables⁴.
-4. **Install Android Studio/VS Code**: Download and install Android Studio or Visual Studio Code based on your preference. These IDEs will be used for Flutter development.
-5. **Install Flutter and Dart Plugins**: In your chosen IDE, look for the Flutter and Dart plugins and install them. These plugins provide a suite of tools for working with Flutter.
+## Installing Flutter SDK
+
+1. Download the Flutter SDK from the official website: [https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install)
+2. Extract the downloaded ZIP file and place the `flutter` folder in your desired location (e.g., `C:\src\flutter` for Windows or `~/Developer/flutter` for macOS/Linux).
+3. Add the `flutter/bin` directory to your PATH environment variable:
+
+- For Windows: In the search bar, type 'env' and select "Edit the system environment variables". Click on the "Environment Variables" button. Under "User variables" or "System variables", find the "Path" variable, select it, and click "Edit". Click "New" and add the path to your `flutter/bin` directory.
+- For macOS/Linux: Add the following line to your `~/.bashrc` or `~/.zshrc` file: `export PATH="$PATH:[PATH_TO_FLUTTER_SDK]/flutter/bin"`
+
+## Installing Android Studio and VS Code
+
+Flutter development requires an IDE. You can choose between Android Studio and Visual Studio Code:
+
+1. Download and install Android Studio from [https://developer.android.com/studio](https://developer.android.com/studio) or VS Code from [https://code.visualstudio.com](https://code.visualstudio.com).
+2. Launch your chosen IDE and install the Flutter and Dart plugins:
+
+- For Android Studio: Go to "File" -> "Settings" -> "Plugins". Search for "Flutter" and "Dart", and install both plugins.
+- For VS Code: Go to the Extensions view (Ctrl+Shift+X). Search for "Flutter" and "Dart", and install both extensions.
 
 ## Creating a New Flutter Project
 
-1. **Open Terminal/Command Prompt**: Open your terminal (Mac/Linux) or command prompt (Windows).
-2. **Navigate to Your Workspace**: Use the `cd` command to navigate to the directory where you want to create your Flutter project.
-3. **Create Flutter Project**: Run the command `flutter create your_project_name`. Replace `your_project_name` with your desired project name.
-4. **Navigate to Your Project**: Use the `cd your_project_name` command to navigate into your newly created Flutter project.
-5. **Run Flutter Project**: Finally, run your Flutter project using the `flutter run` command.
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to create your Flutter project.
+3. Run the following command to create a new Flutter project:
+
+   ```bash
+   flutter create my_app
+   ```
+
+   Replace `my_app` with your desired project name.
+
+4. Navigate into the project directory:
+   ```bash
+   cd my_app
+   ```
+5. Connect a device or start an emulator/simulator.
+6. Run the Flutter app with the following command:
+   `bash
+flutter run
+`
+   This will launch your Flutter app on the connected device or emulator/simulator.
+
+## Verifying the Setup
+
+To verify that your Flutter setup is complete and working correctly, run the following command in your terminal or command prompt:
+
+    ```bash
+    flutter doctor
+    ```
+
+This command checks your environment and displays a report of the status of your Flutter installation. Make sure that no issues are reported.
+
+With these steps completed, you're ready to start building Flutter applications!
 
 ## References
 
-Source: Conversation with Bing, 4/18/2024
-(1) Install | Flutter. https://docs.flutter.dev/get-started/install.
-(2) Flutter Environment Setup for a complete Beginner - Medium. https://haroonkhan9426.medium.com/flutter-environment-setup-for-a-complete-beginner-261fa225e5a5.
-(3) Flutter install in windows environment variable - Stack Overflow. https://stackoverflow.com/questions/60212125/flutter-install-in-windows-environment-variable.
-(4) Flutter Development Environment Setup: A Step-by-Step Guide. https://medium.com/@sahaj.blup/flutter-development-environment-setup-a-step-by-step-guide-5e457583bc4d.
-(5) Setting up the Framework development environment · flutter ... - GitHub. https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment.
-(6) undefined. https://flutter.dev/docs/get-started/install/.
-
-Source: Conversation with Bing, 4/18/2024
-(1) Install | Flutter. https://docs.flutter.dev/get-started/install.
-(2) Flutter Environment Setup for a complete Beginner - Medium. https://haroonkhan9426.medium.com/flutter-environment-setup-for-a-complete-beginner-261fa225e5a5.
-(3) Flutter install in windows environment variable - Stack Overflow. https://stackoverflow.com/questions/60212125/flutter-install-in-windows-environment-variable.
-(4) Flutter Development Environment Setup: A Step-by-Step Guide. https://medium.com/@sahaj.blup/flutter-development-environment-setup-a-step-by-step-guide-5e457583bc4d.
-(5) Setting up the Framework development environment · flutter ... - GitHub. https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment.
-(6) undefined. https://flutter.dev/docs/get-started/install/.
+1. Flutter official installation guide: [https://docs.flutter.dev/get-started/install](https://docs.flutter.dev/get-started/install)
+2. Flutter environment setup for beginners: [https://haroonkhan9426.medium.com/flutter-environment-setup-for-a-complete-beginner-261fa225e5a5](https://haroonkhan9426.medium.com/flutter-environment-setup-for-a-complete-beginner-261fa225e5a5)
+3. Setting Flutter path in Windows environment variables: [https://stackoverflow.com/questions/60212125/flutter-install-in-windows-environment-variable](https://stackoverflow.com/questions/60212125/flutter-install-in-windows-environment-variable)
+4. Step-by-step Flutter development environment setup: [https://medium.com/@sahaj.blup/flutter-development-environment-setup-a-step-by-step-guide-5e457583bc4d](https://medium.com/@sahaj.blup/flutter-development-environment-setup-a-step-by-step-guide-5e457583bc4d)
+5. Setting up the Flutter framework development environment: [https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment](https://github.com/flutter/flutter/wiki/Setting-up-the-Framework-development-environment)
