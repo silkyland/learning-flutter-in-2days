@@ -13,4 +13,4 @@
 - รอจน Flutter ทำการตั้งค่าและดาวน์โหลดโปรเจคใหม่สำเร็จ
   ทำการ Run โดยกดปุ่ม F5 แล้วเลือก Emulator เพื่อ Run Application
 
-  ![Run Project](/assets/images/firstrun.png | width=500)
+  ![Run Project](/assets/images/firstrun.png)
