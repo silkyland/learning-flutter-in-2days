@@ -328,3 +328,66 @@ sudo softwareupdate --install-rosetta --agree-to-license
    ```
 
 พยายามใช้ Xcode เวอร์ชันปัจจุบันให้มากที่สุด
+
+### ตั้งค่า Android Toolchain บน Android Studio
+
+เพื่อให้ใช้ Android Studio และ Android SDK ในการพัฒนาแอป Flutter สำหรับ Android จำเป็นต้องตั้งค่า Android Studio ที่จำเป็นดังนี้
+
+- Android SDK Platform, API 34.0.5
+- Android SDK Command-line Tools
+- Android SDK Build-Tools
+- Android SDK Platform-Tools
+- Android Emulator
+
+## ตรวจสอบการติดตั้งเพื่อเช็คความพร้อมพัฒนา Flutter
+
+### รันคำสั่ง Flutter doctor
+
+คำสั่ง `flutter doctor` จะตรวจสอบความถูกต้องของส่วนประกอบทั้งหมดของสภาพแวดล้อมการพัฒนา Flutter ที่สมบูรณ์สำหรับ Windows
+
+1. เปิด PowerShell
+
+2. เพื่อตรวจสอบการติดตั้งส่วนประกอบทั้งหมด ให้รันคำสั่งต่อไปนี้
+
+   ```
+   flutter doctor
+   ```
+
+เนื่องจากคุณเลือกที่จะพัฒนาสำหรับ Android คุณจึงไม่จำเป็นต้องมี "ทุก" ส่วนประกอบ หากคุณทำตามคู่มือนี้ ผลลัพธ์ของคำสั่งของคุณควรจะคล้ายกับ:
+
+```
+Running flutter doctor...
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.19.6, on Microsoft Windows 11 [Version 10.0.22621.3155], locale en)
+[✓] Windows version (Installed version of Windows is version 10 or higher)
+[✓] Android toolchain - develop for Android devices (Android SDK version 34.0.5)
+[!] Chrome - develop for the web
+[!] Visual Studio - develop Windows apps
+[✓] Android Studio (version 2023.3)
+[✓] VS Code (version 1.89)
+[✓] Connected device (1 available)
+[✓] Network resources
+
+
+! Doctor found issues in 2 categories.
+```
+
+หรือ บน MacOS
+
+```
+Running flutter doctor...
+Doctor summary (to see all details, run flutter doctor -v):
+[✓] Flutter (Channel stable, 3.19.6, on macOS 14.4.0 23E214 darwin-arm64, locale en)
+[!] Android toolchain - develop for Android devices
+[!] Chrome - develop for the web
+[✓] Xcode - develop for iOS and macOS (Xcode 15)
+[!] Android Studio (not installed)
+[✓] VS Code (version 1.89)
+[✓] Connected device (1 available)
+[✓] Network resources
+
+
+! Doctor found issues in 3 categories.
+```
+
+สำหรับการติดตั้งเพิ่มเติมให้เข้าไปยัง [คู่มือการติดตั้ง Flutter](https://docs.flutter.dev/get-started/install) จาก Official Website
