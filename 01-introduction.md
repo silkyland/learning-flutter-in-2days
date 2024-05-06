@@ -46,7 +46,7 @@ Many popular apps across various domains have been built using Flutter. Some not
 
 ### Growing Flutter Community
 
-![Company using Flutter]('/assets/images/company.png')
+![Company using Flutter](/assets/images/company.png)
 
 Flutter has a large and rapidly growing community of developers. This community actively contributes to Flutter's development, creating a wide range of packages and plugins that extend Flutter's capabilities. The Flutter team at Google also actively engages with this community, taking feedback and making continuous improvements to the framework.
 
