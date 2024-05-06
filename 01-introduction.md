@@ -1,28 +1,38 @@
-# Introduction to Flutter
+# บทนำสู่ Flutter
 
-## What is Flutter?
+## Flutter คืออะไร?
 
-Flutter is an open-source UI software development kit created by Google. It allows developers to build natively compiled applications for mobile, web, and desktop platforms from a single codebase. Flutter uses the Dart programming language, which was also developed by Google.
+Flutter เป็นชุดเครื่องมือพัฒนาซอฟต์แวร์ UI แบบโอเพนซอร์สที่สร้างโดย Google ซึ่งช่วยให้นักพัฒนาสามารถสร้างแอปพลิเคชันที่คอมไพล์แบบเนทีฟสำหรับแพลตฟอร์มมือถือ เว็บ และเดสก์ท็อป จากโค้ดฐานเดียว Flutter ใช้ภาษาโปรแกรม Dart ซึ่งพัฒนาโดย Google เช่นกัน
 
-### Key Features
+### คุณสมบัติสำคัญ
 
-1. **Fast Development**: Flutter's hot reload feature allows developers to see the changes they make to the code in real-time, without losing the application state. This significantly speeds up the development process.
+1. **การพัฒนาที่รวดเร็ว**: คุณสมบัติ Hot Reload ของ Flutter ช่วยให้นักพัฒนาเห็นการเปลี่ยนแปลงที่ทำกับโค้ดแบบเรียลไทม์ โดยไม่ต้องสูญเสียสถานะของแอปพลิเคชัน ซึ่งช่วยเร่งกระบวนการพัฒนาได้อย่างมาก
 
-2. **Expressive and Flexible UI**: Flutter provides a rich set of customizable widgets that allow developers to create expressive and flexible user interfaces. These widgets are designed to look great on both iOS and Android platforms.
+2. **UI ที่มีความยืดหยุ่นและน่าประทับใจ**: Flutter มีชุด Widget ที่ปรับแต่งได้หลากหลาย ช่วยให้นักพัฒนาสามารถสร้างส่วนติดต่อผู้ใช้ที่มีความยืดหยุ่นและน่าประทับใจ Widget เหล่านี้ออกแบบมาให้ดูดีทั้งบนแพลตฟอร์ม iOS และ Android
 
-3. **Native Performance**: Flutter's widgets incorporate all critical platform differences such as scrolling, navigation, icons, and fonts to provide full native performance on both iOS and Android.
+3. **ประสิทธิภาพเทียบเท่าแอปเนทีฟ**: Widget ของ Flutter ผสานรวมความแตกต่างที่สำคัญของแพลตฟอร์ม เช่น การเลื่อน การนำทาง ไอคอน และฟอนต์ เพื่อให้ได้ประสิทธิภาพเทียบเท่าแอปเนทีฟทั้งบน iOS และ Android
 
-4. **Single Codebase**: With Flutter, you can develop for iOS, Android, and web applications from a single codebase. This significantly reduces development time and effort.
+4. **ใช้โค้ดฐานเดียว**: ด้วย Flutter คุณสามารถพัฒนาแอปพลิเคชันสำหรับ iOS, Android และเว็บจากโค้ดฐานเดียว ซึ่งช่วยลดเวลาและความพยายามในการพัฒนาได้อย่างมาก
 
-### Flutter Architecture
+5. **ความเข้ากันได้กับระบบนิเวศของ Google**: Flutter ได้รับการสนับสนุนจาก Google อย่างเต็มที่ และสามารถทำงานร่วมกับบริการต่างๆ ของ Google เช่น Firebase, Google Maps และ Google Pay ได้อย่างราบรื่น ทำให้การรวมบริการเหล่านี้เข้ากับแอปของคุณเป็นเรื่องง่าย
 
-Flutter consists of three main architectural layers:
+6. **ชุมชนนักพัฒนาที่เข้มแข็ง**: Flutter มีชุมชนนักพัฒนาที่เติบโตอย่างรวดเร็วและกระตือรือร้น ซึ่งมีส่วนช่วยในการสร้างแพ็คเกจและไลบรารีจำนวนมากที่ขยายความสามารถของ Flutter นอกจากนี้ยังมีทรัพยากรและบทช่วยสอนมากมายที่ช่วยให้นักพัฒนาเรียนรู้และแก้ปัญหาได้
 
-1. **Flutter Framework**: This is a collection of Dart packages that provide the basic building blocks for Flutter applications, such as animation, gestures, and the widget set.
+### **สถาปัตยกรรมของ Flutter**
 
-2. **Flutter Engine**: This is a portable runtime for hosting Flutter applications. It implements Flutter's core libraries, including graphics, text layout, file and network I/O, accessibility support, plugin architecture, and a Dart runtime and compile toolchain.
+![Flutter Architecture](https://docs.flutter.dev/assets/images/docs/arch-overview/archdiagram.png)
 
-3. **Embedder**: This layer allows Flutter to run on various platforms such as iOS, Android, web, and desktop.
+Flutter ประกอบด้วยชั้นสถาปัตยกรรมหลัก 3 ชั้น:
+
+1. **Flutter Framework**: เป็นชุดของแพ็คเกจ Dart ที่ให้บล็อกการสร้างพื้นฐานสำหรับแอปพลิเคชัน Flutter เช่น แอนิเมชัน, เจสเจอร์ และชุด Widget
+
+2. **Flutter Engine**: เป็น Runtime แบบพกพาสำหรับโฮสต์แอปพลิเคชัน Flutter โดยเป็นตัวที่นำไลบรารีหลักของ Flutter มาใช้ รวมถึงกราฟิก, การจัดเรียงข้อความ, การ I/O ของไฟล์และเครือข่าย, การสนับสนุนการเข้าถึง, สถาปัตยกรรมปลั๊กอิน และ Runtime ของ Dart พร้อมกับเครื่องมือคอมไพล์
+
+3. **Embedder**: ชั้นนี้ช่วยให้ Flutter สามารถทำงานบนแพลตฟอร์มต่างๆ เช่น การใช้ภาษา Java/C++ สำหรับ Android, Objective-C สำหรับ iOS/macOS และ C++ สำหรับ Windows/Linux และ Dart VM ใน Web Worker จะส่งคำสั่งไปยังเบราว์เซอร์ผ่าน JavaScript เพื่อทำการ render UI บน Web Browser
+
+---
+
+แหล่งเรียนรู้สำหรับ Flutter Architecture\* [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview)
 
 ### Popular Apps Built with Flutter
 
@@ -35,6 +45,8 @@ Many popular apps across various domains have been built using Flutter. Some not
 - Realtor.com real estate app
 
 ### Growing Flutter Community
+
+![Company using Flutter]('/assets/images/company.png')
 
 Flutter has a large and rapidly growing community of developers. This community actively contributes to Flutter's development, creating a wide range of packages and plugins that extend Flutter's capabilities. The Flutter team at Google also actively engages with this community, taking feedback and making continuous improvements to the framework.
 
