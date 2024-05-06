@@ -34,66 +34,62 @@ Flutter ประกอบด้วยชั้นสถาปัตยกรร
 
 แหล่งเรียนรู้สำหรับ Flutter Architecture\* [Flutter architectural overview](https://docs.flutter.dev/resources/architectural-overview)
 
-### Popular Apps Built with Flutter
+### Application ยอดนิยมที่ถูกพัฒนาด้วย Flutter
 
-Many popular apps across various domains have been built using Flutter. Some notable examples include:
+หลากหลายแอพพลิเคชั่นจากหลายบริษัทมีการพัฒนาด้วย Flutter ที่มีชื่อเสียงเช่น
 
-- Google Ads app
-- Reflectly
-- Xianyu by Alibaba
-- Hamilton app for Hamilton Musical
-- Realtor.com real estate app
+- Google Earth
+- Grab
+- New York Times
+- Ebay
+- Alibaba
 
-### Growing Flutter Community
+### การเติบโตบนชุมชนของ Flutter
 
 ![Company using Flutter](/assets/images/company.png)
 
-Flutter has a large and rapidly growing community of developers. This community actively contributes to Flutter's development, creating a wide range of packages and plugins that extend Flutter's capabilities. The Flutter team at Google also actively engages with this community, taking feedback and making continuous improvements to the framework.
+ภาษา Flutter มีชุมชนนักพัฒนาขนาดใหญ่ที่เติบโตอย่างรวดเร็ว ชุมชนนี้มีส่วนร่วมอย่างแข็งขันในการพัฒนา Flutter สร้างแพ็คเกจและปลั๊กอินหลากหลายเพื่อขยายความสามารถของ Flutter ทีมงาน Flutter ของ Google ก็ทำงานร่วมกับชุมชนนี้อย่างแข็งขันเช่นกัน การรับฟังความคิดเห็นและปรับปรุงเฟรมเวิร์คอย่างต่อเนื่อง Flutter จึงเป็นเครื่องมือที่ทรงพลังและอเนกประสงค์สำหรับการสร้างแอปพลิเคชันที่สวยงาม คอมไพล์แบบ native สำหรับมือถือ เว็บ และเดสก์ท็อปจาก codebase เดียว วงจรการพัฒนาที่รวดเร็ว UI ที่สามารถแสดงออกและยืดหยุ่น และประสิทธิภาพแบบ native ทำให้ Flutter เป็นตัวเลือกที่น่าสนใจสำหรับนักพัฒนาจำนวนมาก
 
-Flutter is a powerful and versatile tool for creating beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. Its fast development cycle, expressive and flexible UI, and native performance make it an attractive choice for many developers.
+## กรณีการใช้งานและตัวอย่างแอป Flutter
 
-## Use Cases and Examples of Flutter Apps
+ความหลากหลายและความสามารถข้ามแพลตฟอร์มของ Flutter ทำให้เหมาะสำหรับแอปพลิเคชันหลากหลายประเภท ต่อไปนี้เป็นกรณีการใช้งานทั่วไปและตัวอย่างของแอปที่สร้างด้วย Flutter:
 
-Flutter's versatility and cross-platform capabilities make it suitable for a wide range of applications. Here are some common use cases and examples of apps built with Flutter:
+1. **แอปพาณิชย์อิเล็กทรอนิกส์**: Flutter เป็นตัวเลือกที่ยอดเยี่ยมสำหรับการสร้างแอปพลิเคชันพาณิชย์อิเล็กทรอนิกส์ เนื่องจากความสามารถในการสร้างส่วนติดต่อผู้ใช้ที่น่าสนใจและตอบสนองได้ ตัวอย่างที่โดดเด่นคือแอป Alibaba ซึ่งใช้ Flutter สำหรับส่วนติดต่อผู้ใช้
 
-1. **E-commerce Apps**: Flutter is a great choice for building e-commerce applications due to its ability to create attractive, responsive user interfaces. A prime example is the Alibaba app, which uses Flutter for its user interface.
+2. **แอปเพิ่มประสิทธิภาพการทำงาน**: ไลบรารีวิดเจ็ตที่กว้างขวางและประสิทธิภาพที่ราบรื่นของ Flutter ทำให้เหมาะอย่างยิ่งสำหรับการสร้างแอปพลิเคชันเพิ่มประสิทธิภาพการทำงาน ตัวอย่างเช่น แอป Google Ads ซึ่งช่วยให้ผู้ใช้จัดการแคมเปญ Google Ads จากอุปกรณ์มือถือของตน
 
-2. **Productivity Apps**: Flutter's extensive widget library and smooth performance make it ideal for creating productivity applications. An example is the Google Ads app, which helps users manage their Google Ads campaigns from their mobile devices.
+3. **แอปสุขภาพและฟิตเนส**: วิดเจ็ตที่ปรับแต่งได้และความสามารถในการผสานรวมกับคุณสมบัติของอุปกรณ์ เช่น เซ็นเซอร์และกล้องของ Flutter ทำให้เหมาะสำหรับแอปสุขภาพและฟิตเนส หนึ่งในแอปดังกล่าวคือ 7 Minute Workout ซึ่งแนะนำผู้ใช้ผ่านกิจวัตรการออกกำลังกายอย่างรวดเร็ว
 
-3. **Health and Fitness Apps**: Flutter's customizable widgets and ability to integrate with device features like sensors and cameras make it well-suited for health and fitness apps. One such app is 7 Minute Workout, which guides users through quick workout routines.
+4. **แอปท่องเที่ยว**: Flutter สามารถใช้สร้างแอปที่ให้ความรู้สึกเหมือนจริงและดึงดูดสายตาสำหรับอุตสาหกรรมการท่องเที่ยว ตัวอย่างเช่น แอป Hamilton ซึ่งให้ประสบการณ์แบบอินเทอร์แอคทีฟสำหรับแฟนๆ ละครเพลง Hamilton
 
-4. **Travel and Tourism Apps**: Flutter can be used to create immersive, visually appealing apps for the travel and tourism industry. An example is the Hamilton app, which provides an interactive experience for fans of the Hamilton musical.
+5. **แอปเครือข่ายสังคม**: ความสามารถในการสร้างส่วนติดต่อผู้ใช้ที่น่าสนใจและตอบสนองได้ของ Flutter ทำให้เป็นตัวเลือกที่ดีสำหรับแอปเครือข่ายสังคม ตัวอย่างเช่น Realtor.com แอปอสังหาริมทรัพย์ที่ให้ผู้ใช้เรียกดูและแชร์รายชื่อทรัพย์สิน
 
-5. **Social Networking Apps**: Flutter's ability to create engaging, responsive user interfaces makes it a good choice for social networking applications. An example is Realtor.com, a real estate app that allows users to browse and share property listings.
+6. **แอปเกม**: แม้ว่า Flutter จะไม่ได้เป็นเอนจินการพัฒนาเกมหลัก แต่ความสามารถในการสร้างกราฟิกที่ราบรื่นและมีประสิทธิภาพสูงทำให้เหมาะสำหรับเกมบางประเภท โดยเฉพาะเกมแคชชวลและปริศนา ตัวอย่างหนึ่งคือเกมยอดนิยม 2048
 
-6. **Gaming Apps**: While Flutter is not primarily a game development engine, its ability to create smooth, high-performance graphics makes it suitable for certain types of games, particularly casual games and puzzles. One example is the popular game 2048.
+7. **แอปการศึกษา**: วิดเจ็ตอินเทอร์แอคทีฟและการสนับสนุนมัลติมีเดียของ Flutter ทำให้เป็นแพลตฟอร์มที่ดีสำหรับแอปการศึกษา ตัวอย่างเช่น Vocaboo แอปที่ช่วยให้ผู้ใช้เรียนรู้คำศัพท์และภาษาใหม่ๆ
 
-7. **Educational Apps**: Flutter's interactive widgets and multimedia support make it a good platform for educational apps. An example is Vocaboo, an app that helps users learn new words and languages.
+นี่เป็นเพียงตัวอย่างไม่กี่ตัวอย่างของแอปพลิเคชันประเภทต่างๆ ที่สามารถสร้างด้วย Flutter ในขณะที่ Flutter พัฒนาอย่างต่อเนื่องและชุมชนเติบโตขึ้น เราคาดว่าจะได้เห็นกรณีการใช้งานที่หลากหลายและสร้างสรรค์มากขึ้นในอนาคต
 
-These are just a few examples of the many types of applications that can be built with Flutter. As Flutter continues to evolve and its community grows, we can expect to see even more diverse and innovative use cases in the future.
+## **ทำไมต้องเรียนรู้ Flutter?**
 
-## Why Learn Flutter?
+มีเหตุผลน่าสนใจหลายประการที่ควรเรียนรู้ Flutter ในฐานะนักพัฒนาแอปมือถือ นี่คือประโยชน์สำคัญบางประการ:
 
-There are many compelling reasons to learn Flutter as a mobile app developer. Here are some of the key benefits:
+1.  **Codebase เดียวสำหรับหลายแพลตฟอร์ม**: ด้วย Flutter คุณสามารถเขียน codebase เดียวและปรับใช้กับหลายแพลตฟอร์ม รวมถึง iOS, Android, เว็บ และเดสก์ท็อป ซึ่งสามารถลดเวลาและความพยายามในการพัฒนาได้อย่างมากเมื่อเทียบกับการเขียน codebase แยกสำหรับแต่ละแพลตฟอร์ม
 
-1. **Single Codebase for Multiple Platforms**: With Flutter, you can write a single codebase and deploy it to multiple platforms, including iOS, Android, web, and desktop. This can significantly reduce development time and effort compared to writing separate codebases for each platform.
+2.  **วงจรการพัฒนาที่รวดเร็ว**: คุณสมบัติ hot reload ของ Flutter ช่วยให้คุณสามารถแก้ไขโค้ดและเห็นผลลัพธ์ได้ทันทีโดยไม่สูญเสียสถานะของแอปพลิเคชัน ซึ่งสามารถเพิ่มความเร็วในกระบวนการพัฒนาและอนุญาตให้ทดลองและทำซ้ำได้มากขึ้น
 
-2. **Fast Development Cycle**: Flutter's hot reload feature allows you to make changes to your code and see the results instantly without losing the application state. This can greatly speed up the development process and allow for more experimentation and iteration.
+3.  **UI ที่สวยงามและปรับแต่งได้**: ชุดวิดเจ็ตที่หลากหลายและปรับแต่งได้ของ Flutter ช่วยให้คุณสร้างส่วนติดต่อผู้ใช้ที่สวยงาม ตอบสนองได้ และรู้สึกเป็น native บนแต่ละแพลตฟอร์ม คุณมีการควบคุมอย่างเต็มที่เหนือทุกพิกเซลบนหน้าจอ
 
-3. **Beautiful, Custom UI**: Flutter's rich set of customizable widgets allows you to create beautiful, responsive user interfaces that look and feel native on each platform. You have full control over every pixel on the screen.
+4.  **ประสิทธิภาพสูง**: สถาปัตยกรรมของ Flutter ช่วยให้มีประสิทธิภาพสูง ภาพเคลื่อนไหวที่ราบรื่น และประสบการณ์ผู้ใช้ที่ราบรื่น โดยคอมไพล์เป็นโค้ด native และไม่พึ่งพาการแทนที่โค้ด หรือ การ interpretation
 
-4. **High Performance**: Flutter's architecture allows for high performance, smooth animations, and seamless user experiences. It compiles to native code and doesn't rely on intermediate code representations or interpretation.
+5.  **การเติมโตของชุมชนและ Ecosystem**: Flutter มีชุมชนนักพัฒนาขนาดใหญ่ที่มีส่วนร่วมอย่างแข็งขัน ซึ่งหมายความว่ามีแหล่งข้อมูลมากมายสำหรับการเรียนรู้ แก้ไขปัญหา และขยายความสามารถของ Flutter ผ่านปลั๊กอินและแพ็คเกจ
 
-5. **Growing Community and Ecosystem**: Flutter has a large and actively engaged community of developers. This means there are many resources available for learning, troubleshooting, and extending the capabilities of Flutter through plugins and packages.
+6.  **ได้รับการสนับสนุนจาก Google**: ในฐานะโครงการของ Google, Flutter ได้รับประโยชน์จากการลงทุน การสนับสนุน และความมุ่งมั่นในการปรับปรุงอย่างต่อเนื่องของ Google ซึ่งสามารถสร้างความมั่นใจให้กับนักพัฒนาในความยั่งยืนระยะยาวและการพัฒนาของเฟรมเวิร์ค
 
-6. **Backed by Google**: As a Google project, Flutter benefits from Google's investment, support, and commitment to continual improvement. This can give developers confidence in the long-term viability and evolution of the framework.
+7.  **ภาษา Dart**: Dart ภาษาที่ใช้โดย Flutter เรียนรู้ได้ง่ายสำหรับนักพัฒนาที่คุ้นเคยกับ JavaScript หรือภาษาเชิงวัตถุอื่นๆ มีคุณสมบัติเช่น strong typing, generics และ async/await สำหรับการเขียนโปรแกรมแบบ asynchronous
 
-7. **Dart Language**: Dart, the language used by Flutter, is easy to learn for developers familiar with JavaScript or other object-oriented languages. It offers features like strong typing, generics, and async/await for asynchronous programming.
+8.  **เครื่องมือทดสอบและดีบัก**: Flutter มีชุดเครื่องมือทดสอบและดีบักที่ทรงพลัง เช่น Flutter Inspector, DevTools และ widget testing ที่สามารถช่วยรับประกันคุณภาพและความน่าเชื่อถือของแอปพลิเคชันของคุณ
 
-8. **Testing and Debugging Tools**: Flutter provides a suite of powerful testing and debugging tools, such as Flutter Inspector, DevTools, and widget testing, that can help ensure the quality and reliability of your applications.
+9.  **ศักยภาพในการแบ่งปันโค้ด**: ในขณะที่ Flutter มุ่งเป้าไปที่การพัฒนาแอปมือถือเป็นหลัก ความสามารถในการกำหนดเป้าหมายแพลตฟอร์มเว็บและเดสก์ท็อปก็เปิดโอกาสให้มีการแบ่งปันและใช้โค้ดซ้ำในโครงการที่กว้างขึ้น
 
-9. **Potential for Code Sharing**: While Flutter primarily targets mobile app development, its ability to also target web and desktop platforms opens up possibilities for code sharing and reuse across a wider range of projects.
-
-10. **Future-proofing Your Skills**: As Flutter continues to gain popularity and adoption, learning Flutter can future-proof your skills and increase your marketability as a developer in the mobile app development space.
-
-These are just some of the many reasons why learning Flutter can be a valuable investment for mobile app developers. Whether you're looking to build cross-platform apps more efficiently, create stunning user interfaces, or leverage a powerful and growing ecosystem, Flutter has a lot to offer.
+10. **ทำให้ทักษะของคุณทันสมัย**: เนื่องจาก Flutter ได้รับความนิยมและการยอมรับเพิ่มขึ้นอย่างต่อเนื่อง การเรียนรู้ Flutter จึงสามารถทำให้ทักษะของคุณทันสมัยและเพิ่มโอกาสในตลาดในฐานะนักพัฒนาในพื้นที่การพัฒนาแอปมือถือ
