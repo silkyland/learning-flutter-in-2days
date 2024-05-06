@@ -20,9 +20,9 @@
 
 การดาวน์โหลด Flutter SDK มีหลายวิธี เลือกตัวอย่างใดตัวอย่างหนึ่งดังต่อไปนี้
 
-### วิธีที่ 1. ใช้ VS Code เพื่อติดตั้ง Flutter
+### วิธีที่ 1. ใช้ VS Code เพื่อติดตั้ง Flutter (แนะนำ)
 
-เพื่อติดตั้ง Flutter โดยใช้คำแนะนำเหล่านี้ ให้ตรวจสอบว่าคุณได้ติดตั้ง Visual Studio Code เวอร์ชัน 1.77 หรือใหม่กว่า และส่วนขยาย [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) สำหรับ VS Code แล้ว
+เพื่อติดตั้ง Flutter โดยใช้คำแนะนำเหล่านี้ ให้ตรวจสอบว่าเราได้ติดตั้ง Visual Studio Code เวอร์ชัน 1.77 หรือใหม่กว่า และส่วนขยาย [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) สำหรับ VS Code แล้ว
 
 #### เรียกใช้ VS Code เพื่อติดตั้ง Flutter
 
@@ -34,7 +34,7 @@
 
 4. เลือก **Flutter: New Project**
 
-5. VS Code จะแจ้งให้เราระบุตำแหน่งของ Flutter SDK บนคอมพิวเตอร์ของคุณ
+5. VS Code จะแจ้งให้เราระบุตำแหน่งของ Flutter SDK บนคอมพิวเตอร์ของเรา
 
    1. กรณีที่เราได้ติดตั้ง Flutter SDK ไว้แล้ว ให้คลิก **Locate SDK**
 
@@ -196,9 +196,9 @@ sudo softwareupdate --install-rosetta --agree-to-license
 
 การดาวน์โหลด Flutter SDK มีหลายวิธี เลือกตัวอย่างใดตัวอย่างหนึ่งดังต่อไปนี้
 
-### วิธีที่ 1. ใช้ VS Code เพื่อติดตั้ง Flutter
+### วิธีที่ 1. ใช้ VS Code เพื่อติดตั้ง Flutter (แนะนำ)
 
-เพื่อติดตั้ง Flutter โดยใช้คำแนะนำเหล่านี้ ให้ตรวจสอบว่าคุณได้ติดตั้ง Visual Studio Code เวอร์ชัน 1.77 หรือใหม่กว่า และส่วนขยาย [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) สำหรับ VS Code แล้ว
+เพื่อติดตั้ง Flutter โดยใช้คำแนะนำเหล่านี้ ให้ตรวจสอบว่าเราได้ติดตั้ง Visual Studio Code เวอร์ชัน 1.77 หรือใหม่กว่า และส่วนขยาย [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) สำหรับ VS Code แล้ว
 
 #### เรียกใช้ VS Code เพื่อติดตั้ง Flutter
 
@@ -210,7 +210,7 @@ sudo softwareupdate --install-rosetta --agree-to-license
 
 4. เลือก **Flutter: New Project**
 
-5. VS Code จะแจ้งให้เราระบุตำแหน่งของ Flutter SDK บนคอมพิวเตอร์ของคุณ
+5. VS Code จะแจ้งให้เราระบุตำแหน่งของ Flutter SDK บนคอมพิวเตอร์ของเรา
 
    1. กรณีที่เราได้ติดตั้ง Flutter SDK ไว้แล้ว ให้คลิก **Locate SDK**
 
@@ -264,16 +264,48 @@ sudo softwareupdate --install-rosetta --agree-to-license
 
 4. **สำคัญ** เมื่อ Flutter ทำการติดตั้งสำเร็จ ระบบจะถามเราว่าจะให้ติดตั้ง `Flutter SDK` to `PATH` หรือไม่ ? โดยระบบจะแสดงดังนี้
 
-   ```
+   ```bash
    Do you want to add the Flutter SDK to PATH so it's accessible
    in external terminals?
    ```
 
    ให้คลิกเลือกที่ `Add SDK to PATH` เมื่อสำเร็จ ระบบจะแสดงข้อมูลดังนี้
 
-   ```
+   ```bash
    The Flutter SDK was added to your PATH
    ```
+
+### วิธีที่ 2. ดาวน์โหลด และ ติดตั้ง
+
+เพื่อจะติดตั้ง `Flutter SDK` ในรูปแบบการดาวน์โหลด เราจะดาวน์โหลด archive (zip) แล้วแตกไฟล์ไฟล์ไปที่เราต้องการ
+
+1. ดาวน์โหลด [Flutter SDK (intel Processor)](https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_3.19.6-stable.zip) หรือ [Flutter SDK (Apple Silicon)](https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_arm64_3.19.6-stable.zip) ที่เป็น `Stable Version` โดยสามารถเลือก [SDK อื่นๆ](https://docs.flutter.dev/release/archive) ได้เช่นกัน
+2. สร้าง Folder ไว้ใน `/Users/<username>/development` หรือ `~/development`
+3. ทำการคลาย zip และคัดลอกไปยัง Folder ที่เราต้องการ เช่น `~/development` ในรูปแบบ `~/development/flutter`
+4. เพิ่ม Flutter ไปยัง `PATH`
+   เพื่อรันคำสั่ง Flutter ใน Terminal ให้เพิ่ม Flutter ลงใน environment variable `PATH` คู่มือนี้สันนิษฐานว่า Mac ของเรารันเชลล์เริ่มต้นล่าสุดคือ `zsh` ซึ่ง Zsh จะใช้ไฟล์ `.zshenv` สำหรับตัวแปรสภาพแวดล้อม (environment variables)
+
+   1. เปิด Terminal แล้วพิมพ์
+
+      ```bash
+      nano ~/.zshenv
+      ```
+
+      หากไม่คุ้นในการใช้ `nano` อาจใช้ `VS Code` ในการเปิดได้เช่นกัน
+
+      ```bash
+      code ~/.zshenv
+      ```
+
+   2. คัดลอกบรรทัดต่อไปนี้และวางไว้ท้ายสุดของไฟล์ `~/.zshenv`
+
+      ```bash
+      export PATH=$HOME/development/flutter/bin:$PATH
+      ```
+
+   3. บันทึกไฟล์ `~/.zshenv`
+
+   4. เพื่อให้การเปลี่ยนแปลงนี้มีผล ให้รีสตาร์ทเซสชันของ terminal ทั้งหมดที่เปิดอยู่
 
 ### ตั้งค่าเพิ่มเติมสำหรับการพัฒนาบนระบบปฏิบัติการ `iOS`
 
@@ -287,7 +319,7 @@ sudo softwareupdate --install-rosetta --agree-to-license
    $ sudo sh -c 'xcode-select -s /Applications/Xcode.app/Contents/Developer && xcodebuild -runFirstLaunch'
    ```
 
-   ใช้พาธนี้เพื่อใช้ Xcode เวอร์ชันล่าสุด หากคุณต้องการใช้เวอร์ชันอื่น ให้ระบุพาธนั้นแทน
+   ใช้พาธนี้เพื่อใช้ Xcode เวอร์ชันล่าสุด หากเราต้องการใช้เวอร์ชันอื่น ให้ระบุพาธนั้นแทน
 
 2. ยอมรับข้อตกลงสัญญาอนุญาตของ Xcode
 
