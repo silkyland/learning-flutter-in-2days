@@ -226,7 +226,7 @@ Counter()
 
 ซึ่ง Counter จะแสดงเป็นข้อความ "Count: 0" และปุ่ม Increment ที่สามารถกดเพื่อเพิ่มค่า count ได้ โดยทุกครั้งที่กดปุ่ม widget จะถูกสร้างใหม่และอัปเดตข้อความให้แสดงค่า count ล่าสุด
 
-### Lifecycle ของ StatelessWidget
+### Lifecycle ของ StatefulWidget
 
 ![flutter stateful lifecycle](/assets/images/lifecycle.png)
 
