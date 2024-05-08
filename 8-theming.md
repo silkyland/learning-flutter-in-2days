@@ -116,4 +116,6 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-##
+#### ตัวอย่างผลลัพธ์การตั้งค่า Theme ให้กับ Application
+
+![ผลการตั้งค่า Theme](/assets/images/8/theme.png)
