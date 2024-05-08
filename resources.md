@@ -10,3 +10,4 @@
 
 - [Material Design](https://m3.material.io/) - Material Design Specification version 3
 - [Material Icons](https://fonts.google.com/icons) - Material Design Icons
+- [Json to Dart Converter](https://app.quicktype.io/?l=dart) - Json to Dart Converter
