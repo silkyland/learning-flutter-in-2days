@@ -6,6 +6,11 @@
 - [Flutter](https://flutter.dev/) - Flutter Framework
 - [Package Manager](https://pub.dev/) - The official package repository for Dart and Flutter apps
 
+## VS Code Extension
+
+- [VS Code Version Lens](https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens) - Version Lens
+- [Codeium](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium) - Codeium: AI Coding Autocomplete and Chat for Python, Javascript, Typescript, Java, Go, and more
+
 ## Other Resources
 
 - [Material Design](https://m3.material.io/) - Material Design Specification version 3

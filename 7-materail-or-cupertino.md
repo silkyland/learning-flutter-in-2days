@@ -49,3 +49,7 @@
 7. **ListView**: ใช้สร้างรายการข้อมูลที่สามารถเลื่อนได้ (scrollable) โดยรายการแต่ละอันมักสร้างจาก ListTile
 
 โดยรวมแล้ว การใช้ Material Design และ widgets เหล่านี้จะช่วยให้แอปของคุณมีลักษณะสอดคล้องกันทั้งหมด สวยงาม ใช้งานง่าย และคุ้นเคยในสายตาผู้ใช้ โดยเฉพาะอย่างยิ่งบนแพลตฟอร์ม Android แต่ก็สามารถใช้ได้ดีกับ iOS เช่นกัน ทั้งนี้เราสามารถกำหนดธีม สี และลักษณะต่างๆ ของ Material Design ให้เข้ากับแบรนด์ของเราได้อย่างอิสระ
+
+\*\* ปัจจุบัน Flutter ใช้ Material Design 3 และเปิดใช้งาน Material 3 อัตโนมัติโดยท่านสามารถเปรียบเทียบความแตกต่างระหว่าง Materail Design version 2 และ 3 ได้ตามลิงค์ฺนี้ : https://flutter.github.io/samples/web/material_3_demo/
+
+![Material Design 3](/assets/images/7/material_design_3.png)
