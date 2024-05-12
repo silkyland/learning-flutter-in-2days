@@ -868,7 +868,9 @@ Image เป็น widget ที่มีความสำคัญมากใ
 ใน Flutter มี widget ประเภท Button หลายชนิดที่ใช้สำหรับสร้างปุ่มกดโต้ตอบกับผู้ใช้ โดยแต่ละชนิดมีลักษณะ พฤติกรรม และวิธีการใช้งานที่แตกต่างกัน ดังนี้
 
 1. ElevatedButton
+
    ![elevated_button](/assets/images/7/elevated-button.png)
+
    ElevatedButton เป็นปุ่มที่มีลักษณะนูนขึ้นมาจากพื้นผิว มีเงาและ ripple effect เมื่อกด เหมาะสำหรับเป็นปุ่ม action หลักในหน้าจอ
 
    ```dart
@@ -928,6 +930,7 @@ Image เป็น widget ที่มีความสำคัญมากใ
 5. FloatingActionButton
 
    ![floating_action_button](/assets/images/7/floating-action-button.png)
+
    FloatingActionButton เป็นปุ่มทรงกลมที่ลอยอยู่บนหน้าจอ มักอยู่มุมล่างขวา ใช้สำหรับ action หลักหรือพิเศษของหน้านั้นๆ
 
    ```dart
@@ -1097,4 +1100,123 @@ InkWell(
 
 ## Scrolling และ List
 
-![SingleChildScrollView](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczgyenp2YWJhdzE0djFuaWZzODF2ZWhpMTQweTlsMnc4MTA4cDhvNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hFIOvegdpEW6268k2N/giphy.gif)
+### SingleChildScrollView
+
+![SingleChildScrollView](/assets/images/7/single-child-scroll-view.gif)
+
+SingleChildScrollView เป็น widget ใน Flutter ที่ใช้สร้างพื้นที่เลื่อนสำหรับ child widget เพียงตัวเดียว เหมาะสำหรับกรณีที่มีเนื้อหาหรือองค์ประกอบที่มีขนาดใหญ่กว่าพื้นที่หน้าจอ และต้องการให้ผู้ใช้สามารถเลื่อนดูได้
+
+ลักษณะสำคัญของ SingleChildScrollView ได้แก่:
+
+1. มี child เพียงตัวเดียว ซึ่งอาจเป็น widget เดี่ยวหรือ widget ที่รวมกลุ่มอื่นๆ เช่น Column, Row, หรือ Grid เป็นต้น
+2. สร้างพื้นที่เลื่อนได้ในแนวตั้ง (vertical) หรือแนวนอน (horizontal) อย่างใดอย่างหนึ่ง
+3. มีพฤติกรรมการเลื่อนแบบ unbounded หมายความว่าผู้ใช้สามารถเลื่อนเกินขอบเขตของเนื้อหาได้ และจะมีเอฟเฟกต์การดีดกลับ (overscroll)
+4. ใช้งานร่วมกับ ScrollController เพื่อกำหนดตำแหน่งการเลื่อนเริ่มต้น หรือตรวจสอบสถานะการเลื่อนได้
+
+ตัวอย่างการใช้งาน SingleChildScrollView:
+
+```dart
+SingleChildScrollView(
+  child: Column(
+    children: <Widget>[
+      Container(
+        height: 200,
+        color: Colors.red,
+      ),
+      Container(
+        height: 200,
+        color: Colors.green,
+      ),
+      Container(
+        height: 200,
+        color: Colors.blue,
+      ),
+      Container(
+        height: 200,
+        color: Colors.yellow,
+      )
+    ],
+  ),
+)
+```
+
+ในตัวอย่างข้างต้น SingleChildScrollView ครอบ Column ที่มี Container 3 ตัวเป็น children แต่ละตัวมีความสูง 200 พิกเซล ดังนั้นเนื้อหารวมจะสูงเกินหน้าจอ ผู้ใช้จึงสามารถเลื่อนขึ้นลงเพื่อดูเนื้อหาทั้งหมดได้
+
+เราสามารถกำหนดทิศทางการเลื่อนได้ผ่านพารามิเตอร์ `scrollDirection` เช่น:
+
+```dart
+SingleChildScrollView(
+  scrollDirection: Axis.horizontal,
+  child: Row(...),
+)
+```
+
+หรือจะใช้ ScrollController เพื่อกำหนดตำแหน่งเลื่อนเริ่มต้น เช่น:
+
+```dart
+final ScrollController _controller = ScrollController(initialScrollOffset: 100);
+
+SingleChildScrollView(
+  controller: _controller,
+  child: Column(...),
+)
+```
+
+### ListView
+
+![ListView](/assets/images/7/listview.gif)
+
+ListView เป็น widget ใน Flutter ที่ใช้สร้างรายการ (list) ของ widget ที่เรียงต่อกันในแนวตั้ง (vertical) หรือแนวนอน (horizontal) โดยรองรับการเลื่อน (scroll) เมื่อมีรายการมากเกินกว่าขนาดของหน้าจอ ListView เหมาะสำหรับการแสดงรายการข้อมูลแบบเชิงเส้น เช่น รายชื่อ, เมนู, ฟีดข่าว เป็นต้น
+
+คุณสมบัติสำคัญของ ListView ได้แก่:
+
+1. สร้างรายการที่เลื่อนได้อย่างมีประสิทธิภาพ โดยใช้เทคนิค lazy loading เพื่อโหลดเฉพาะรายการที่ปรากฏบนหน้าจอ
+2. รองรับการสร้างรายการทั้งแบบคงที่ (fixed) ด้วย `children` พารามิเตอร์ และแบบไดนามิก (dynamic) ด้วย `builder` พารามิเตอร์
+3. มีคอนสตรัคเตอร์ย่อยที่ช่วยให้สร้างรายการได้ง่ายขึ้น เช่น `ListView.builder()`, `ListView.separated()` เป็นต้น
+4. สามารถกำหนดทิศทางการเลื่อนได้ผ่าน `scrollDirection` พารามิเตอร์
+5. ใช้งานร่วมกับ ScrollController เพื่อควบคุมการเลื่อนแบบกำหนดเอง
+
+ตัวอย่างการสร้าง ListView ด้วย `children`:
+
+```dart
+ListView(
+  children: <Widget>[
+    ListTile(
+      leading: Icon(Icons.map),
+      title: Text('Map'),
+    ),
+    ListTile(
+      leading: Icon(Icons.photo_album),
+      title: Text('Album'),
+    ),
+    ListTile(
+      leading: Icon(Icons.phone),
+      title: Text('Phone'),
+    ),
+  ],
+)
+```
+
+ตัวอย่างการสร้าง ListView แบบไดนามิกด้วย `ListView.builder()`:
+
+```dart
+final List<String> entries = <String>['A', 'B', 'C'];
+
+ListView.builder(
+  itemCount: entries.length,
+  itemBuilder: (BuildContext context, int index) {
+    return ListTile(
+      leading: Icon(Icons.list),
+      title: Text('Item ${entries[index]}'),
+    );
+  },
+)
+```
+
+ในตัวอย่างนี้ เราใช้ `ListView.builder()` ในการสร้างรายการแบบไดนามิกจากลิสต์ข้อมูล `entries` โดยระบุจำนวนรายการทั้งหมดผ่าน `itemCount` และสร้าง ListTile สำหรับแต่ละรายการด้วย `itemBuilder`
+
+นอกจากนี้ ListView ยังมีคอนสตรัคเตอร์อื่นๆ ที่มีประโยชน์ เช่น:
+
+- `ListView.separated()`: สร้างรายการพร้อมกับ separator ระหว่างแต่ละรายการ
+- `ListView.custom()`: สร้างรายการด้วย SliverChildDelegate อย่างยืดหยุ่น
+- `ListView.builder()` ร่วมกับ `itemExtent`: สร้างรายการที่มีขนาดคงที่อย่างมีประสิทธิภาพ
