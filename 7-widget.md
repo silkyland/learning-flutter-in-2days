@@ -513,3 +513,153 @@ Scaffold(
 ```
 
 Scaffold มีประโยชน์ในการจัดวางโครงสร้างพื้นฐานของหน้า UI ตามรูปแบบของ Material Design ช่วยให้สร้าง app ที่มีหน้าตาสวยงาม เป็นมาตรฐาน และใช้งานง่าย โดยเราสามารถกำหนดส่วนประกอบต่างๆ ผ่าน properties ของ Scaffold ได้อย่างยืดหยุ่น
+
+## AppBar
+
+![AppBar](./assets/images/7/appbar.png)
+
+AppBar เป็น widget ใน Flutter ที่ใช้แสดงแถบด้านบนของแอปพลิเคชัน (top app bar) ซึ่งมักจะประกอบด้วยชื่อหน้าจอ ไอคอน และตัวเลือกต่างๆ ที่เกี่ยวข้องกับหน้านั้นๆ AppBar มีหน้าที่หลักในการนำทาง ให้ข้อมูล และจัดการ action ต่างๆ ภายในแอป
+
+คุณสมบัติสำคัญของ AppBar ได้แก่:
+
+1. `title` - กำหนดข้อความหรือ widget ที่แสดงเป็นชื่อของ AppBar
+2. `leading` - กำหนด widget ที่แสดงด้านซ้ายของ title เช่น ปุ่มย้อนกลับ
+3. `actions` - กำหนด widget ที่แสดงด้านขวาของ title เช่น ปุ่ม menu, search, settings เป็นต้น
+4. `bottom` - กำหนด widget ที่แสดงด้านล่างของ AppBar เช่น TabBar, SearchBar เป็นต้น
+5. `backgroundColor` - กำหนดสีพื้นหลังของ AppBar
+6. `elevation` - กำหนดระดับเงาของ AppBar
+7. `iconTheme`, `actionsIconTheme`, `textTheme` - กำหนด theme ให้กับไอคอนและข้อความใน AppBar
+8. `centerTitle` - กำหนดว่าต้องการให้ title อยู่ตรงกลางหรือไม่ (ค่าเริ่มต้นเป็น false)
+
+ตัวอย่างการใช้งาน AppBar:
+
+```dart
+Scaffold(
+  appBar: AppBar(
+    title: Text('My App'),
+    leading: IconButton(
+      icon: Icon(Icons.menu),
+      onPressed: () {
+        // open drawer
+      },
+    ),
+    actions: [
+      IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () {
+          // perform search
+        },
+      ),
+      IconButton(
+        icon: Icon(Icons.settings),
+        onPressed: () {
+          // open settings
+        },
+      ),
+    ],
+    backgroundColor: Colors.blue,
+    elevation: 4,
+    centerTitle: true,
+  ),
+  body: Center(
+    child: Text('Hello, World!'),
+  ),
+)
+```
+
+ในตัวอย่างด้านบน เราสร้าง AppBar ที่มีองค์ประกอบดังนี้:
+
+- title แสดงข้อความ "My App"
+- leading มีปุ่ม menu สำหรับเปิด drawer
+- actions ประกอบด้วยปุ่ม search และ settings
+- สีพื้นหลังเป็นสีน้ำเงิน
+- มีเงาระดับ 4
+- จัดชื่อ title ให้อยู่ตรงกลาง
+
+AppBar เป็น widget ที่มีความยืดหยุ่นสูง สามารถปรับแต่งให้เข้ากับธีมและรูปแบบของแอปได้หลากหลาย ช่วยให้ UI ของแอปดูสวยงามและใช้งานได้อย่างมีประสิทธิภาพ ตอบโจทย์ความต้องการของผู้ใช้ได้เป็นอย่างดี
+
+## Container
+
+![Container](./assets/images/7/container.png)
+
+Container เป็น widget อเนกประสงค์ที่ใช้ในการสร้างกล่องหรือภาชนะสำหรับบรรจุ widget อื่นๆ โดยมีความสามารถในการกำหนดขนาด, สี, ระยะขอบ, การจัดวาง และการตกแต่งต่างๆ ให้กับ child widget ที่อยู่ภายใน
+
+คุณสมบัติหลักๆ ของ Container ได้แก่:
+
+1. `child` - กำหนด widget ที่อยู่ภายใน Container (optional)
+2. `alignment` - กำหนดการจัดวาง child widget ภายใน Container
+3. `padding` - กำหนดระยะห่างระหว่าง child widget กับขอบของ Container
+4. `color` - กำหนดสีพื้นหลังของ Container
+5. `decoration` - กำหนดการตกแต่ง Container ด้วย BoxDecoration เช่น สี, รูปภาพ, border, gradient เป็นต้น
+6. `foregroundDecoration` - กำหนด decoration ที่แสดงทับหน้า child widget
+7. `width`, `height` - กำหนดขนาดความกว้างและความสูงของ Container
+8. `constraints` - กำหนดขนาดขั้นต่ำและขั้นสูงของ Container ด้วย BoxConstraints
+9. `margin` - กำหนดระยะห่างระหว่าง Container กับ widget ภายนอก
+10. `transform` - ใช้ Matrix4 ในการแปลง Container เช่น scale, rotate, translate เป็นต้น
+
+ตัวอย่างการใช้งาน Container:
+
+```dart
+Container(
+  width: 200,
+  height: 200,
+  color: Colors.blue,
+  padding: EdgeInsets.all(16),
+  margin: EdgeInsets.all(8),
+  alignment: Alignment.center,
+  child: Text(
+    'Hello, World!',
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 24,
+    ),
+  ),
+)
+```
+
+ในตัวอย่างด้านบน เราสร้าง Container ที่มีขนาด 200x200 พิกเซล มีสีพื้นหลังเป็นสีน้ำเงิน ภายในมี padding โดยรอบ 16 พิกเซล และมี margin ห่างจากขอบนอก 8 พิกเซล โดยจัดวางข้อความ "Hello, World!" ไว้ตรงกลางของ Container
+
+การใช้ Container ร่วมกับคุณสมบัติ `decoration` ช่วยให้เราสามารถสร้างรูปร่างหรือ effect ที่น่าสนใจให้กับ widget ได้ เช่น การสร้าง card ที่มีเงา การสร้าง button ที่มีขอบโค้งมน หรือการสร้าง container ที่มีรูปภาพพื้นหลังแบบ gradient เป็นต้น
+
+Container มีประโยชน์ในการจัดโครงสร้างและจัดวาง widget ต่างๆ บนหน้าจอ รวมถึงการสร้างเลเอาต์ที่มีความยืดหยุ่นและปรับแต่งได้ตามต้องการ ช่วยให้การพัฒนา UI ด้วย Flutter เป็นไปอย่างมีประสิทธิภาพและสวยงามมากยิ่งขึ้น
+
+## SafeArea
+
+SafeArea เป็น widget ใน Flutter ที่ใช้สำหรับกำหนดพื้นที่ปลอดภัย (safe area) ให้กับ child widget เพื่อหลีกเลี่ยงการถูกบดบังโดย system UI ต่างๆ เช่น status bar, notch, rounded corners ฯลฯ ซึ่งช่วยให้ content ของ app แสดงผลได้อย่างเต็มที่และไม่ถูกรบกวน
+
+คุณสมบัติหลักๆ ของ SafeArea ได้แก่:
+
+1. `child` - กำหนด child widget ที่อยู่ภายใน SafeArea
+2. `top`, `bottom`, `left`, `right` - กำหนดว่าต้องการให้ SafeArea เว้นระยะห่างจากขอบด้านใด (ค่าเริ่มต้นเป็น true ทุกด้าน)
+3. `minimum` - กำหนดระยะห่างขั้นต่ำระหว่าง child widget กับขอบของ safe area ในแต่ละด้าน
+4. `maintainBottomViewPadding` - กำหนดว่าต้องการให้ SafeArea คงระยะห่างด้านล่างเพิ่มเติมสำหรับ bottom view (ค่าเริ่มต้นเป็น false)
+
+ตัวอย่างการใช้งาน SafeArea:
+
+```dart
+SafeArea(
+  child: Scaffold(
+    appBar: AppBar(
+      title: Text('My App'),
+    ),
+    body: Center(
+      child: Text('Hello, World!'),
+    ),
+  ),
+)
+```
+
+ในตัวอย่างข้างต้น เราใช้ SafeArea ครอบ Scaffold เพื่อให้ content ภายใน Scaffold ไม่ถูกบดบังโดย system UI โดย SafeArea จะเว้นระยะห่างจากขอบทุกด้านตามค่าเริ่มต้น
+
+หากต้องการปรับแต่งระยะห่างของ SafeArea เราสามารถกำหนดค่าผ่าน `minimum` ได้ เช่น:
+
+```dart
+SafeArea(
+  minimum: EdgeInsets.only(top: 32, left: 16, right: 16),
+  child: Scaffold(...),
+)
+```
+
+ในกรณีนี้ SafeArea จะเว้นระยะห่างด้านบน 32 พิกเซล และด้านซ้ายขวาอย่างละ 16 พิกเซล ในขณะที่ด้านล่างจะไม่เว้นระยะเพิ่มเติม
+
+การใช้ SafeArea ช่วยให้ app ของเรามีความเข้ากันได้ดีกับอุปกรณ์ที่หลากหลาย โดยเฉพาะอุปกรณ์ที่มีรูปร่างหน้าจอแตกต่างจากมาตรฐาน เช่น มี notch มีความโค้งมนตามขอบจอ เป็นต้น ทำให้ UI ของ app ดูเป็นมืออาชีพและใช้งานได้อย่างเต็มประสิทธิภาพบนทุกอุปกรณ์
