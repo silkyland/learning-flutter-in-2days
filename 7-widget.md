@@ -1621,6 +1621,8 @@ ScrollController ยังมีประโยชน์ในหลายกร
 
 ## Routing & Navigation
 
+![Routing & Navigation](/assets/images/7/navigation.gif)
+
 เนื้อหา Navigation & Routing ใน Flutter ครอบคลุมถึงการจัดการการนำทางระหว่างหน้า (screens) ต่างๆ ภายในแอปพลิเคชัน รวมทั้งการส่งผ่านข้อมูลระหว่างหน้าด้วย โดยมีหัวข้อสำคัญดังนี้
 
 1. Navigator
@@ -1826,3 +1828,846 @@ case '/home':
 ```
 
 โดยสรุป การส่ง arguments ระหว่างเส้นทางใน Flutter ทำได้โดยใช้ `arguments` พารามิเตอร์ของ `Navigator.pushNamed()` และ `settings.arguments` ภายใน `RouteGenerator.generateRoute()` ร่วมกับการ type-check และส่งต่อข้อมูลไปยังหน้าปลายทางผ่านคอนสตรัคเตอร์ของ widget นั้นๆ ซึ่งช่วยให้สามารถส่งผ่านข้อมูลระหว่างหน้าจอได้อย่างยืดหยุ่นและมีประสิทธิภาพ
+
+### Understanding with Routing Stack
+
+ตัวอย่าง Routing Stack ด้วย CLI Graphic:
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen D    |   |
+|   +--------------+   |
+|   |  Screen C    |   |
+|   +--------------+   |
+|   |  Screen B    |   |
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+ในแอปพลิเคชัน Flutter, Navigator เป็นตัวจัดการ Routing Stack ซึ่งเป็นโครงสร้างข้อมูลแบบ LIFO (Last-In-First-Out) ที่เก็บลำดับของหน้าจอ (screens) ที่ถูกเปิด
+
+เมื่อแอปเริ่มทำงาน หน้าจอแรก (Screen A) จะถูกผลักเข้าไปใน Routing Stack:
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+เมื่อผู้ใช้เปิดหน้าจอใหม่ (Screen B) หน้าจอนั้นจะถูกผลักเข้าไปบนสุดของ Routing Stack:
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen B    |   |
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+เมื่อผู้ใช้เปิดหน้าจอต่อไป (Screen C และ Screen D) หน้าจอเหล่านั้นจะถูกผลักเข้าไปบนสุดของ Routing Stack ตามลำดับ:
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen D    |   |
+|   +--------------+   |
+|   |  Screen C    |   |
+|   +--------------+   |
+|   |  Screen B    |   |
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+เมื่อผู้ใช้กดปุ่มย้อนกลับ หน้าจอบนสุดของ Routing Stack (Screen D) จะถูกนำออก และหน้าจอก่อนหน้า (Screen C) จะถูกแสดงผล:
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen C    |   |
+|   +--------------+   |
+|   |  Screen B    |   |
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+กระบวนการนี้จะดำเนินต่อไปเรื่อยๆ เมื่อผู้ใช้เปิดหน้าจอใหม่หรือย้อนกลับ โดย Navigator จะจัดการ Routing Stack ให้ และแสดงผลหน้าจอที่เหมาะสมตามลำดับของหน้าจอใน Stack
+
+เมื่อผู้ใช้ย้อนกลับจนถึงหน้าจอแรก (Screen A) และกดย้อนกลับอีกครั้ง แอปจะออกจากการทำงาน
+
+#### Push, Pop, RemoveUntil, Replace, ReplaceUntil
+
+ตัวอย่างการใช้ `push()`, `pop()`, `removeUntil()`, `replace()` และ `replaceUntil()` กับ Routing Stack ใน Flutter
+
+1. ตัวอย่างการใช้ `push()` เพื่อเปิดหน้าจอใหม่:
+
+```dart
+onPressed: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Screen_B()),
+  );
+}
+```
+
+เมื่อปุ่มถูกกด `Navigator.push()` จะสร้าง Route ใหม่ด้วย `MaterialPageRoute` และผลักหน้าจอ `Screen_B` เข้าไปบนสุดของ Routing Stack
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen B    |   | <- หน้าจอใหม่ถูกเพิ่มเข้ามา
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+2. ตัวอย่างการใช้ `pop()` เพื่อย้อนกลับไปหน้าจอก่อนหน้า:
+
+```dart
+onPressed: () {
+  Navigator.pop(context);
+}
+```
+
+เมื่อปุ่มถูกกด `Navigator.pop()` จะนำหน้าจอบนสุดของ Routing Stack ออก และย้อนกลับไปยังหน้าจอก่อนหน้า
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen A    |   | <- หน้าจอก่อนหน้าถูกแสดงผล
+|   +--------------+   |
++-----------------------+
+```
+
+3. ตัวอย่างการใช้ `removeUntil()` เพื่อนำหน้าจอออกจาก Stack จนกว่าจะเจอเงื่อนไขที่กำหนด:
+
+```dart
+onPressed: () {
+  Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+}
+```
+
+เมื่อปุ่มถูกกด `Navigator.pushNamedAndRemoveUntil()` จะนำหน้าจอออกจาก Routing Stack ทั้งหมดจนกว่าจะเจอเงื่อนไขที่กำหนดใน callback (ในที่นี้คือ `(route) => false` ซึ่งหมายความว่าจะนำทุกหน้าจอออกจนกว่าจะถึงหน้าจอแรก) และเปิดหน้าจอที่ระบุในพารามิเตอร์แรก (ในที่นี้คือ `'/'` หรือหน้าจอแรก)
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen D    |   | <- หน้าจอ D ถูกนำออก
+|   +--------------+   |
+|   |  Screen C    |   | <- หน้าจอ C ถูกนำออก
+|   +--------------+   |
+|   |  Screen B    |   | <- หน้าจอ B ถูกนำออก
+|   +--------------+   |
+|   |  Screen A    |   | <- หน้าจอ A (หน้าแรก) ถูกแสดงผล
+|   +--------------+   |
++-----------------------+
+```
+
+4. ตัวอย่างการใช้ `replace()` เพื่อแทนที่หน้าจอบนสุดของ Stack ด้วยหน้าจอใหม่:
+
+```dart
+onPressed: () {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => Screen_C()),
+  );
+}
+```
+
+เมื่อปุ่มถูกกด `Navigator.pushReplacement()` จะสร้าง Route ใหม่ด้วย `MaterialPageRoute` และแทนที่หน้าจอบนสุดของ Routing Stack ด้วยหน้าจอใหม่ (ในที่นี้คือ `Screen_C`)
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen B    |   | <- หน้าจอ B ถูกแทนที่
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen C    |   | <- หน้าจอ C ถูกแทนที่เข้ามา
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+5. ตัวอย่างการใช้ `replaceUntil()` เพื่อแทนที่หน้าจอในสแต็กจนกว่าจะเจอเงื่อนไขที่กำหนด:
+
+```dart
+onPressed: () {
+  Navigator.pushNamedAndRemoveUntil(context, '/screenC', ModalRoute.withName('/screenA'));
+}
+```
+
+เมื่อปุ่มถูกกด `Navigator.pushNamedAndRemoveUntil()` จะแทนที่หน้าจอในสแต็กด้วยหน้าจอใหม่ (ในที่นี้คือ `'/screenC'`) และนำหน้าจอออกจากสแต็กจนกว่าจะเจอเงื่อนไขที่กำหนดใน `ModalRoute.withName()` (ในที่นี้คือ `'/screenA'` ซึ่งหมายความว่าจะแทนที่หน้าจอจนกว่าจะถึงหน้าจอ A)
+
+```
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen D    |   |
+|   +--------------+   |
+|   |  Screen C    |   |
+|   +--------------+   |
+|   |  Screen B    |   | <- หน้าจอ B และ C ถูกแทนที่
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+
++-----------------------+
+|         App          |
++-----------------------+
+|     Navigator        |
+|   (Routing Stack)    |
+|   +--------------+   |
+|   |  Screen C    |   | <- หน้าจอ C ถูกแทนที่เข้ามา
+|   +--------------+   |
+|   |  Screen A    |   |
+|   +--------------+   |
++-----------------------+
+```
+
+## Form & Input
+
+เรื่อง Form และ Input ใน Flutter ครอบคลุมการรับข้อมูลจากผู้ใช้ผ่านส่วนติดต่อต่างๆ เช่น ช่องกรอกข้อความ, เลือกตัวเลือก, ปุ่มกด เป็นต้น และการจัดการข้อมูลที่ได้รับผ่าน Form ซึ่งมีองค์ประกอบหลักดังนี้
+
+1. TextField และ TextFormField
+
+   - ใช้สำหรับรับข้อมูลข้อความจากผู้ใช้
+   - TextFormField เป็น TextField ที่มีคุณสมบัติเพิ่มเติมสำหรับใช้ใน Form
+   - สามารถกำหนดรูปแบบการกรอก (keyboardType) เช่น ข้อความ, อีเมล, ตัวเลข ฯลฯ
+   - ตัวอย่างการใช้งาน TextField:
+     ```dart
+     TextField(
+       decoration: InputDecoration(labelText: 'Enter your name'),
+       onChanged: (value) {
+         // ทำสิ่งใดสิ่งหนึ่งกับค่าที่ผู้ใช้กรอก
+       },
+     )
+     ```
+
+2. Checkbox และ CheckboxListTile
+
+   - ใช้สำหรับให้ผู้ใช้เลือกหรือไม่เลือกตัวเลือก (true/false)
+   - CheckboxListTile ใช้สำหรับแสดง Checkbox พร้อมข้อความกำกับ
+   - ตัวอย่างการใช้งาน Checkbox:
+
+     ```dart
+     bool isChecked = false;
+
+     Checkbox(
+       value: isChecked,
+       onChanged: (bool? value) {
+         setState(() {
+           isChecked = value ?? false;
+         });
+       },
+     )
+     ```
+
+3. Radio และ RadioListTile
+
+   - ใช้สำหรับให้ผู้ใช้เลือกตัวเลือกเดียวจากหลายตัวเลือก
+   - RadioListTile ใช้สำหรับแสดง Radio พร้อมข้อความกำกับ
+   - ตัวอย่างการใช้งาน Radio:
+
+     ```dart
+     int? selectedValue = 0;
+
+     Row(
+       children: [
+         Radio(
+           value: 1,
+           groupValue: selectedValue,
+           onChanged: (value) {
+             setState(() {
+               selectedValue = value as int?;
+             });
+           },
+         ),
+         Radio(
+           value: 2,
+           groupValue: selectedValue,
+           onChanged: (value) {
+             setState(() {
+               selectedValue = value as int?;
+             });
+           },
+         ),
+       ],
+     )
+     ```
+
+4. DropdownButton และ DropdownButtonFormField
+
+   - ใช้สำหรับให้ผู้ใช้เลือกตัวเลือกจากรายการแบบเลื่อนลง
+   - DropdownButtonFormField ใช้สำหรับแสดง DropdownButton ใน Form
+   - สามารถกำหนดรายการตัวเลือกผ่าน items พารามิเตอร์
+   - ตัวอย่างการใช้งาน DropdownButton:
+
+     ```dart
+     String? selectedValue = 'Option 1';
+
+     DropdownButton<String>(
+       value: selectedValue,
+       items: <String>['Option 1', 'Option 2', 'Option 3']
+           .map<DropdownMenuItem<String>>((String value) {
+         return DropdownMenuItem<String>(
+           value: value,
+           child: Text(value),
+         );
+       }).toList(),
+       onChanged: (String? newValue) {
+         setState(() {
+           selectedValue = newValue;
+         });
+       },
+     )
+     ```
+
+5. Form และ GlobalKey
+
+   - ใช้สำหรับจัดกลุ่มและจัดการ input widget ต่างๆ
+   - ใช้ GlobalKey เพื่ออ้างอิงถึง state ของ Form
+   - มีเมธอดต่างๆ เช่น validate(), save(), reset() สำหรับจัดการข้อมูลใน Form
+   - ตัวอย่างการใช้งาน Form:
+
+     ```dart
+     final _formKey = GlobalKey<FormState>();
+
+     Form(
+       key: _formKey,
+       child: Column(
+         children: <Widget>[
+           TextFormField(
+             validator: (value) {
+               if (value == null || value.isEmpty) {
+                 return 'Please enter some text';
+               }
+               return null;
+             },
+           ),
+           ElevatedButton(
+             onPressed: () {
+               if (_formKey.currentState!.validate()) {
+                 // ข้อมูลถูกต้อง ทำการประมวลผลต่อ
+               }
+             },
+             child: Text('Submit'),
+           ),
+         ],
+       ),
+     )
+     ```
+
+นอกจากนี้ Flutter ยังมี input widget อื่นๆ เช่น Slider, Switch, DatePicker, TimePicker ฯลฯ ซึ่งสามารถนำมาใช้ในการสร้างฟอร์มได้ตามความเหมาะสม
+
+#### ตัวอย่างการใช้งาน Form
+
+ตัวอย่าง Flutter app ที่มีการใช้งาน Form และ input widget ต่างๆ:
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Form Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final _formKey = GlobalKey<FormState>();
+  String? _name;
+  String? _email;
+  bool _agreedToTerms = false;
+  String? _selectedGender;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Form Example'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              Image.asset('assets/images/flutter_logo.png'),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Name'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your name';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _name = value;
+                },
+              ),
+              TextFormField(
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  if (!value.contains('@')) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  _email = value;
+                },
+              ),
+              CheckboxListTile(
+                title: const Text('I agree to the terms and conditions'),
+                value: _agreedToTerms,
+                onChanged: (value) {
+                  setState(() {
+                    _agreedToTerms = value ?? false;
+                  });
+                },
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(labelText: 'Gender'),
+                value: _selectedGender,
+                items: <String>['Male', 'Female', 'Other']
+                      .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                      );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedGender = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null) {
+                    return 'Please select your gender';
+                  }
+                  return null;
+                },
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    // ข้อมูลถูกต้อง ทำการประมวลผลต่อ
+                    print('Name: $_name');
+                    print('Email: $_email');
+                    print('Agreed to terms: $_agreedToTerms');
+                    print('Gender: $_selectedGender');
+                  }
+                },
+                child: const Text('Submit'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+ผลลัพธ์ได้ดังนี้
+
+![Form & Input](/assets/images/7/form-widget.png)
+
+ในตัวอย่างนี้ เราสร้างแอปพลิเคชันที่มีฟอร์มสำหรับเก็บข้อมูลผู้ใช้ ประกอบด้วย:
+
+1. ช่องกรอกชื่อ (TextFormField) ที่ต้องกรอกข้อมูล ไม่สามารถเป็นค่าว่างได้
+2. ช่องกรอกอีเมล (TextFormField) ที่ต้องกรอกข้อมูล และต้องเป็นอีเมลที่ถูกต้อง
+3. Checkbox สำหรับยอมรับเงื่อนไข
+4. Dropdown สำหรับเลือกเพศ ต้องเลือกค่าจึงจะถือว่าถูกต้อง
+
+เมื่อกดปุ่ม Submit จะมีการตรวจสอบความถูกต้องของฟอร์ม (validate) ก่อน ถ้าผ่านทั้งหมด จะทำการบันทึกข้อมูล (save) และนำไปประมวลผลต่อ (ในตัวอย่างนี้เป็นแค่การแสดงค่าออกมา)
+
+โค้ดตัวอย่างนี้แสดงให้เห็นการใช้งาน Form, GlobalKey, TextFormField, CheckboxListTile, และ DropdownButtonFormField ร่วมกัน เพื่อสร้างฟอร์มที่มีการตรวจสอบความถูกต้องและจัดเก็บข้อมูล ซึ่งเป็นส่วนสำคัญในการพัฒนาแอปพลิเคชันที่มีปฏิสัมพันธ์กับผู้ใช้
+
+## Model & Json Serialization
+
+ในการพัฒนาแอปพลิเคชันด้วย Flutter เรามักจะต้องทำงานกับข้อมูลที่มีโครงสร้างซับซ้อน เช่น ข้อมูลที่ได้รับจาก API ในรูปแบบ JSON ซึ่งเราจำเป็นต้องแปลงข้อมูลเหล่านั้นให้อยู่ในรูปแบบที่เหมาะสมสำหรับใช้งานภายในแอปพลิเคชัน นั่นคือการสร้าง Model class และใช้ JSON Serializer ในการแปลงข้อมูลระหว่าง JSON และ Model
+
+1. Model Class
+
+   - เป็น class ที่ใช้เป็นโครงสร้างข้อมูลสำหรับเก็บข้อมูลที่ได้รับจาก API หรือ database
+   - ประกอบด้วย properties ที่สอดคล้องกับ fields ของข้อมูล และ constructor สำหรับสร้าง instance ของ class
+   - สามารถมี methods สำหรับจัดการหรือแปลงข้อมูลภายใน class ได้
+
+   ตัวอย่าง Model class สำหรับข้อมูล User:
+
+   ```dart
+   class User {
+     final int id;
+     final String name;
+     final String email;
+
+     User({
+       required this.id,
+       required this.name,
+       required this.email,
+     });
+   }
+   ```
+
+2. JSON Serializer
+
+   - เป็นวิธีการแปลงข้อมูลระหว่างรูปแบบ JSON (ที่ได้รับจาก API) กับ Model class (ที่ใช้ภายในแอป)
+   - ในการแปลง JSON เป็น Model ใช้ constructor ของ Model class ร่วมกับ `jsonDecode()` เพื่อสร้าง instance จาก JSON
+   - ในการแปลง Model เป็น JSON ใช้ `jsonEncode()` ร่วมกับ `toJson()` method ของ Model class
+
+   ตัวอย่างการแปลง JSON เป็น Model ด้วย factory constructor:
+
+   ```dart
+   factory User.fromJson(Map<String, dynamic> json) {
+     return User(
+       id: json['id'],
+       name: json['name'],
+       email: json['email'],
+     );
+   }
+   ```
+
+   ตัวอย่างการแปลง Model เป็น JSON ด้วย `toJson()` method:
+
+   ```dart
+   Map<String, dynamic> toJson() => {
+         'id': id,
+         'name': name,
+         'email': email,
+       };
+   ```
+
+3. การใช้งาน Model และ JSON Serializer
+
+   - เมื่อได้รับข้อมูล JSON จาก API ใช้ `jsonDecode()` เพื่อแปลงเป็น Map แล้วส่งเข้า factory constructor ของ Model เพื่อสร้าง instance
+   - เมื่อต้องการส่งข้อมูล Model ไปยัง API ให้เรียกใช้ `toJson()` เพื่อแปลงเป็น Map แล้วส่งผ่านทาง HTTP request
+
+   ตัวอย่างการใช้งาน Model และ JSON Serializer กับ HTTP request:
+
+   ```dart
+   Future<User> fetchUser(int id) async {
+     final response = await http.get(Uri.parse('https://api.example.com/users/$id'));
+
+     if (response.statusCode == 200) {
+       return User.fromJson(jsonDecode(response.body));
+     } else {
+       throw Exception('Failed to load user');
+     }
+   }
+   ```
+
+สิ่งที่ควรคำนึงถึงเมื่อทำงานกับ Model และ JSON Serializer ใน Flutter ได้แก่:
+
+- การตั้งชื่อ Model class และ properties ให้สอดคล้องกับข้อมูลใน JSON เพื่อให้การ serialize และ deserialize เป็นไปอย่างถูกต้อง
+- การจัดการกรณีที่ข้อมูลใน JSON เป็น null หรือไม่ตรงกับชนิดข้อมูลที่คาดหวัง เช่นด้วยการใช้ `required` หรือ `default value` ใน constructor ของ Model
+- การใช้ code generator เช่น `json_serializable` เพื่อสร้าง boilerplate code สำหรับ Model และ JSON Serializer ให้อัตโนมัติ
+- การแยก Model class ไว้ในไฟล์หรือโฟลเดอร์ที่เหมาะสมเพื่อให้โครงสร้างโปรเจ็กต์เป็นระเบียบและง่ายต่อการบำรุงรักษา
+
+การออกแบบและใช้งาน Model และ JSON Serializer ที่ดีจะช่วยให้การทำงานกับข้อมูลใน Flutter App เป็นไปอย่างมีประสิทธิภาพ ลดข้อผิดพลาดที่อาจเกิดขึ้นจากการจัดการข้อมูล และทำให้โค้ดมีความเป็นระเบียบและอ่านง่ายมากขึ้น
+
+## Http Request
+
+เนื้อหาสำหรับการทำ HTTP Request ใน Flutter มีดังนี้
+
+ในการพัฒนาแอปพลิเคชันด้วย Flutter เรามักจะต้องมีการติดต่อกับ API หรือเซิร์ฟเวอร์ภายนอกเพื่อดึงหรืออัปเดตข้อมูล ซึ่งทำได้โดยการส่ง HTTP request ไปยัง API endpoint ที่กำหนด โดยใช้ HTTP method ต่างๆ เช่น GET, POST, PUT, DELETE เป็นต้น
+
+Flutter มี package `http` ที่ช่วยให้การส่ง HTTP request และจัดการ response เป็นไปได้อย่างง่ายดาย โดยมีขั้นตอนหลักๆ ดังนี้
+
+1. เพิ่ม dependency ของ package `http` ในไฟล์ `pubspec.yaml`:
+
+   ```yaml
+   dependencies:
+     http: ^0.13.0
+   ```
+
+2. Import package `http` ในไฟล์ที่ต้องการใช้งาน:
+
+   ```dart
+   import 'package:http/http.dart' as http;
+   ```
+
+3. สร้างฟังก์ชันสำหรับส่ง HTTP request ไปยัง API endpoint ที่ต้องการ โดยใช้เมธอดที่เหมาะสม เช่น `http.get()`, `http.post()`, `http.put()`, `http.delete()` เป็นต้น
+
+   ตัวอย่างการส่ง GET request เพื่อดึงข้อมูล:
+
+   ```dart
+   Future<http.Response> fetchData() async {
+     final response = await http.get(Uri.parse('https://api.example.com/data'));
+     return response;
+   }
+   ```
+
+   ตัวอย่างการส่ง POST request พร้อมส่งข้อมูลไปด้วย:
+
+   ```dart
+   Future<http.Response> createData(String name) async {
+     final response = await http.post(
+       Uri.parse('https://api.example.com/data'),
+       headers: <String, String>{
+         'Content-Type': 'application/json; charset=UTF-8',
+       },
+       body: jsonEncode(<String, String>{
+         'name': name,
+       }),
+     );
+     return response;
+   }
+   ```
+
+4. เรียกใช้ฟังก์ชันที่สร้างขึ้นเพื่อส่ง HTTP request และจัดการกับ response ที่ได้รับกลับมา โดยใช้ `await` กับฟังก์ชันที่เป็น asynchronous และตรวจสอบ `statusCode` ของ response เพื่อดูว่า request สำเร็จหรือไม่
+
+   ตัวอย่างการเรียกใช้ฟังก์ชัน `fetchData()` และแสดงผลลัพธ์:
+
+   ```dart
+   final response = await fetchData();
+   if (response.statusCode == 200) {
+     final data = jsonDecode(response.body);
+     print(data);
+   } else {
+     print('Request failed with status: ${response.statusCode}.');
+   }
+   ```
+
+สิ่งที่ควรคำนึงถึงเมื่อทำงานกับ HTTP request ใน Flutter ได้แก่:
+
+- การจัดการข้อผิดพลาดและกรณีที่ response ไม่ได้เป็นไปตามที่คาดหวัง เช่น status code ที่ไม่ใช่ 200 OK
+- การ parse หรือแปลงข้อมูล JSON ที่ได้รับจาก response ให้เป็นรูปแบบที่ต้องการ โดยใช้ `jsonDecode()` และ model class
+- การส่ง request แบบ authenticated ด้วย token หรือ credentials
+- การจัดการ timeout ของ request ด้วย `http.Client` และ `http.Request`
+- การใช้ FutureBuilder หรือ StreamBuilder ในการอัปเดต UI ตามผลลัพธ์ของ request
+- การใช้ package อื่นๆ เช่น `dio` หรือ `chopper` ที่ช่วยให้การทำ HTTP request ง่ายและยืดหยุ่นขึ้น
+
+การทำความเข้าใจและใช้งาน HTTP request อย่างถูกต้องจะช่วยให้แอปพลิเคชันของเราสามารถสื่อสารกับ API และแลกเปลี่ยนข้อมูลกับเซิร์ฟเวอร์ได้อย่างมีประสิทธิภาพ ทำให้สามารถพัฒนาแอปพลิเคชันที่มีความสามารถหลากหลายและตอบโจทย์ความต้องการของผู้ใช้ได้ดียิ่งขึ้น
+
+## Future Builder
+
+FutureBuilder เป็น Widget ที่ใช้สำหรับสร้าง UI ตามสถานะของ Future ซึ่ง Future เป็นการดำเนินการแบบอะซิงโครนัส (asynchronous) ที่อาจใช้เวลาในการประมวลผลและให้ผลลัพธ์เป็น snapshot ณ เวลาใดเวลาหนึ่ง โดย FutureBuilder จะรอการเปลี่ยนแปลงของ snapshot และสร้าง UI ตามสถานะปัจจุบัน
+
+FutureBuilder มีพารามิเตอร์หลักดังนี้:
+
+1. `future` - กำหนด Future ที่ต้องการติดตาม
+2. `builder` - ฟังก์ชันที่รับ BuildContext และ AsyncSnapshot เป็นพารามิเตอร์ และ return Widget ที่สร้างจาก snapshot นั้น
+
+AsyncSnapshot มีคุณสมบัติที่สำคัญ ได้แก่:
+
+- `connectionState` - สถานะของ Future ณ ขณะนั้น (none, waiting, active, done)
+- `data` - ข้อมูลที่ได้จาก Future เมื่อเสร็จสมบูรณ์
+- `error` - ข้อผิดพลาดที่เกิดขึ้นระหว่างดำเนินการ (ถ้ามี)
+- `hasData` - ตรวจสอบว่า snapshot มีข้อมูลหรือไม่
+- `hasError` - ตรวจสอบว่า snapshot มีข้อผิดพลาดหรือไม่
+
+ตัวอย่างการใช้งาน FutureBuilder เพื่อแสดงข้อมูลจาก API:
+
+```dart
+FutureBuilder<List<Post>>(
+  future: fetchPosts(),
+  builder: (context, snapshot) {
+    if (snapshot.hasData) {
+      return ListView.builder(
+        itemCount: snapshot.data!.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(snapshot.data![index].title),
+          );
+        },
+      );
+    } else if (snapshot.hasError) {
+      return Text("${snapshot.error}");
+    }
+    // ค่าเริ่มต้นที่จะแสดงระหว่างที่ Future ยังทำงานไม่เสร็จ
+    return CircularProgressIndicator();
+  },
+)
+```
+
+ในตัวอย่างนี้ เราใช้ FutureBuilder ร่วมกับ `fetchPosts()` ซึ่งเป็น Future ที่ดึงข้อมูลรายการโพสต์จาก API เมื่อ Future เสร็จสมบูรณ์และมีข้อมูล (`snapshot.hasData`) จะแสดงข้อมูลในรูปแบบของ ListView หากเกิดข้อผิดพลาด (`snapshot.hasError`) จะแสดงข้อความแจ้งเตือน และหากกำลังรอผลลัพธ์ จะแสดง CircularProgressIndicator เป็นตัวบ่งชี้ความคืบหน้า
+
+วิธีการใช้ FutureBuilder ที่ดีควรคำนึงถึง:
+
+- การจัดการกรณีที่ snapshot ไม่มีข้อมูล เช่น แสดงตัวบ่งชี้ความคืบหน้าหรือข้อความแจ้งเตือน
+- การตรวจสอบและจัดการข้อผิดพลาดที่อาจเกิดขึ้นระหว่างดำเนินการ
+- พิจารณาใช้ FutureBuilder ร่วมกับ package ที่ช่วยจัดการ state และ caching เช่น provider หรือ flutter_bloc เพื่อป้องกันการเรียก Future ซ้ำโดยไม่จำเป็น
+
+ตัวอย่างการใช้ FutureBuilder กับ API Endpoint สำหรับดึงข้อมูล todos ทั้งหมด (/todos) มีดังนี้
+
+```dart
+class TodoList extends StatelessWidget {
+  final String apiUrl = 'https://api.example.com/todos';
+
+  Future<List<Todo>> fetchTodos() async {
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = jsonDecode(response.body);
+      return data.map((json) => Todo.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load todos');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Todo List'),
+      ),
+      body: FutureBuilder<List<Todo>>(
+        future: fetchTodos(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                final todo = snapshot.data![index];
+                return ListTile(
+                  title: Text(todo.title),
+                  subtitle: Text(todo.description),
+                  trailing: Checkbox(
+                    value: todo.completed,
+                    onChanged: null,
+                  ),
+                );
+              },
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('${snapshot.error}'),
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class Todo {
+  final int id;
+  final String title;
+  final String description;
+  final bool completed;
+
+  Todo({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.completed,
+  });
+
+  factory Todo.fromJson(Map<String, dynamic> json) {
+    return Todo(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      completed: json['completed'],
+    );
+  }
+}
+```
+
+ในตัวอย่างนี้ เรามีการดำเนินการดังนี้:
+
+1. กำหนด URL ของ API Endpoint ที่ต้องการเรียกใช้ใน `apiUrl`
+
+2. สร้างฟังก์ชัน `fetchTodos()` ที่เป็น Future สำหรับดึงข้อมูล todos จาก API โดยใช้ `http.get()` ในการส่ง HTTP GET request ไปยัง `apiUrl` และแปลงผลลัพธ์จาก JSON เป็นออบเจ็กต์ `Todo` ด้วย `Todo.fromJson()`
+
+3. ใน `build()` เราใช้ FutureBuilder โดยกำหนด `future` เป็น `fetchTodos()` และสร้าง UI ตาม snapshot ที่ได้รับ
+
+   - ถ้ามีข้อมูล (`snapshot.hasData`) จะสร้าง ListView ที่แสดงรายการ todos
+   - ถ้ามีข้อผิดพลาด (`snapshot.hasError`) จะแสดงข้อความแจ้งเตือน
+   - ถ้ากำลังรอข้อมูล จะแสดง CircularProgressIndicator
+
+4. สร้าง class `Todo` สำหรับเป็นโมเดลของข้อมูล todo โดยมีคอนสตรัคเตอร์และ factory method `fromJson()` สำหรับแปลง JSON เป็นออบเจ็กต์ `Todo`
+
+ด้วยวิธีนี้ เราสามารถแสดงรายการ todos ที่ได้จาก API ใน ListView ได้อย่างมีประสิทธิภาพ โดย FutureBuilder จะช่วยจัดการสถานะของ Future และสร้าง UI ตามสถานะปัจจุบันให้โดยอัตโนมัติ
+
+สิ่งสำคัญคือต้องมีการจัดการข้อผิดพลาดที่อาจเกิดขึ้นระหว่างการเรียก API ด้วย เช่น การแสดงข้อความแจ้งเตือนเมื่อเกิดข้อผิดพลาด หรือการลองเรียกซ้ำเมื่อมีปัญหาการเชื่อมต่อ เป็นต้น เพื่อให้แอปพลิเคชันมีความน่าเชื่อถือและใช้งานได้อย่างราบรื่น
