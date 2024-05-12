@@ -663,3 +663,434 @@ SafeArea(
 ในกรณีนี้ SafeArea จะเว้นระยะห่างด้านบน 32 พิกเซล และด้านซ้ายขวาอย่างละ 16 พิกเซล ในขณะที่ด้านล่างจะไม่เว้นระยะเพิ่มเติม
 
 การใช้ SafeArea ช่วยให้ app ของเรามีความเข้ากันได้ดีกับอุปกรณ์ที่หลากหลาย โดยเฉพาะอุปกรณ์ที่มีรูปร่างหน้าจอแตกต่างจากมาตรฐาน เช่น มี notch มีความโค้งมนตามขอบจอ เป็นต้น ทำให้ UI ของ app ดูเป็นมืออาชีพและใช้งานได้อย่างเต็มประสิทธิภาพบนทุกอุปกรณ์
+
+## Row and Column
+
+Row และ Column เป็น widget ใน Flutter ที่ใช้สำหรับจัดวาง widget ในแนวนอนและแนวตั้งตามลำดับ ซึ่งเป็นวิธีหลักในการสร้างเลย์เอาต์ที่มีโครงสร้างเป็นแถวหรือคอลัมน์
+
+1. Row
+
+   ![Row](/assets//images/7/row-widget.png)
+
+   Row เป็น widget ที่ใช้จัดวาง children ในแนวนอน โดยเรียงจากซ้ายไปขวา
+
+คุณสมบัติหลักของ Row ได้แก่:
+
+- `children` - กำหนด widget ที่อยู่ภายใน Row เป็น list ของ widget
+- `mainAxisAlignment` - กำหนดการจัดวาง children ตามแนวแกนหลัก (main axis) ซึ่งก็คือแนวนอน
+- `crossAxisAlignment` - กำหนดการจัดวาง children ตามแนวแกนรอง (cross axis) ซึ่งก็คือแนวตั้ง
+- `mainAxisSize` - กำหนดขนาดของ Row ตามแนวแกนหลัก
+- `textDirection` - กำหนดทิศทางการเรียงข้อความ (ซ้ายไปขวาหรือขวาไปซ้าย)
+
+ตัวอย่างการใช้งาน Row:
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  crossAxisAlignment: CrossAxisAlignment.center,
+  children: [
+    Icon(Icons.star, size: 50),
+    Icon(Icons.star, size: 50),
+    Icon(Icons.star, size: 50),
+  ],
+)
+```
+
+ในตัวอย่างข้างต้น เราสร้าง Row ที่มี 3 icon ดาว โดยจัดให้อยู่ห่างกันเท่าๆ กันในแนวนอน และอยู่ตรงกลางในแนวตั้ง
+
+2. Column
+
+   ![Column](/assets//images/7/column-widget.png)
+
+   Column เป็น widget ที่ใช้จัดวาง children ในแนวตั้ง โดยเรียงจากบนลงล่าง
+
+คุณสมบัติหลักของ Column มีลักษณะคล้ายกับ Row แต่สลับแกนหลักและแกนรอง ดังนี้:
+
+- `children` - กำหนด widget ที่อยู่ภายใน Column เป็น list ของ widget
+- `mainAxisAlignment` - กำหนดการจัดวาง children ตามแนวแกนหลัก (main axis) ซึ่งก็คือแนวตั้ง
+- `crossAxisAlignment` - กำหนดการจัดวาง children ตามแนวแกนรอง (cross axis) ซึ่งก็คือแนวนอน
+- `mainAxisSize` - กำหนดขนาดของ Column ตามแนวแกนหลัก
+- `textDirection` - กำหนดทิศทางการเรียงข้อความ (บนลงล่างหรือล่างขึ้นบน)
+
+ตัวอย่างการใช้งาน Column:
+
+```dart
+Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ],
+)
+```
+
+ในตัวอย่างนี้ เราสร้าง Column ที่มี 3 ข้อความ โดยจัดให้อยู่ตรงกลางในแนวตั้ง และชิดซ้ายในแนวนอน
+
+Row และ Column เป็น widget พื้นฐานที่สำคัญมากในการสร้าง UI ของ Flutter ช่วยให้เราสามารถจัดวาง widget ได้อย่างยืดหยุ่นและเป็นระเบียบ โดยสามารถใช้ร่วมกับ widget อื่นๆ เช่น Container, Expanded, Flexible เพื่อสร้างเลย์เอาต์ที่ซับซ้อนและตอบโจทย์การใช้งานได้หลากหลายรูปแบบ
+
+## Text และ RichText
+
+ในการแสดงข้อความใน Flutter เราสามารถใช้ widget Text และ RichText ซึ่งมีความสามารถและวิธีการใช้งานที่แตกต่างกันดังนี้
+
+1. Text
+   Text เป็น widget ที่ใช้สำหรับแสดงข้อความธรรมดา (plain text) บนหน้าจอ โดยสามารถกำหนดรูปแบบข้อความได้ผ่าน parameter ต่างๆ
+
+คุณสมบัติสำคัญของ Text ได้แก่:
+
+- `data` - กำหนดข้อความที่ต้องการแสดง
+- `style` - กำหนดรูปแบบข้อความด้วย TextStyle เช่น สี ขนาด font สไตล์ เป็นต้น
+- `textAlign` - กำหนดการจัดเรียงข้อความ เช่น ชิดซ้าย ชิดขวา กึ่งกลาง
+- `textDirection` - กำหนดทิศทางการเรียงข้อความ (ซ้ายไปขวาหรือขวาไปซ้าย)
+- `maxLines` - กำหนดจำนวนบรรทัดสูงสุดที่ต้องการให้แสดง
+- `overflow` - กำหนดวิธีการจัดการเมื่อข้อความเกินขนาดที่กำหนด
+
+ตัวอย่างการใช้งาน Text:
+
+```dart
+Text(
+  'Hello, Flutter!',
+  style: TextStyle(
+    color: Colors.blue,
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  ),
+  textAlign: TextAlign.center,
+)
+```
+
+ในตัวอย่างนี้ เราแสดงข้อความ "Hello, Flutter!" ด้วยสีน้ำเงิน ขนาด 24 และตัวหนา โดยจัดให้อยู่ตรงกลาง
+
+2. RichText
+
+   ![RichText](/assets/images/7/richtext.png)
+
+   RichText เป็น widget ที่ใช้สำหรับแสดงข้อความที่มีการจัดรูปแบบหลายรูปแบบ (formatted text) ในข้อความเดียวกัน โดยใช้ TextSpan ในการกำหนดส่วนต่างๆ ของข้อความ
+
+คุณสมบัติสำคัญของ RichText ได้แก่:
+
+- `text` - กำหนด TextSpan ที่เป็นรากของข้อความ
+- `textAlign` - กำหนดการจัดเรียงข้อความ เช่น ชิดซ้าย ชิดขวา กึ่งกลาง
+- `textDirection` - กำหนดทิศทางการเรียงข้อความ (ซ้ายไปขวาหรือขวาไปซ้าย)
+- `softWrap` - กำหนดว่าจะให้ตัดบรรทัดอัตโนมัติเมื่อข้อความเกินความกว้างหรือไม่
+- `overflow` - กำหนดวิธีการจัดการเมื่อข้อความเกินขนาดที่กำหนด
+- `textScaleFactor` - กำหนดตัวคูณขนาดข้อความ
+
+ตัวอย่างการใช้งาน RichText:
+
+```dart
+RichText(
+  text: TextSpan(
+    text: 'Hello, ',
+    style: TextStyle(fontSize: 24, color: Colors.black),
+    children: [
+      TextSpan(
+        text: 'Flutter',
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+      ),
+      TextSpan(
+        text: '!',
+        style: TextStyle(fontSize: 30, color: Colors.red),
+      ),
+    ],
+  ),
+  textAlign: TextAlign.center,
+)
+```
+
+ในตัวอย่างนี้ เราแสดงข้อความ "Hello, Flutter!" โดยคำว่า "Hello, "เป็นสีดำ ขนาด 24 ส่วนคำว่า "Flutter" เป็นสีน้ำเงิน ตัวหนา และ "!" เป็นสีแดง ขนาด 30 โดยจัดให้ทั้งข้อความอยู่ตรงกลาง
+
+Text และ RichText เป็น widget สำหรับการแสดงผลข้อความที่มีความยืดหยุ่นสูงและใช้งานง่าย ช่วยให้เราสามารถออกแบบตัวอักษรและจัดรูปแบบข้อความได้อย่างอิสระตามต้องการ ซึ่งเป็นส่วนสำคัญในการสร้างส่วนติดต่อผู้ใช้ที่สวยงามและเข้าใจง่ายใน Flutter
+
+## Image
+
+![Image widget](/assets/images/7/image-widget.png)
+
+Image เป็น widget ใน Flutter ที่ใช้สำหรับแสดงรูปภาพจากแหล่งต่างๆ เช่น asset bundle, file system, internet เป็นต้น โดยรองรับรูปแบบไฟล์ที่หลากหลาย เช่น JPEG, PNG, GIF, WebP, BMP
+
+คุณสมบัติสำคัญของ Image ได้แก่:
+
+- `image` - กำหนดแหล่งที่มาของรูปภาพ ซึ่งเป็น ImageProvider เช่น AssetImage, FileImage, NetworkImage, MemoryImage
+- `width`, `height` - กำหนดความกว้างและความสูงของรูปภาพ
+- `fit` - กำหนดวิธีการ scale รูปภาพให้พอดีกับพื้นที่ที่กำหนด เช่น cover, contain, fill, fitWidth, fitHeight
+- `alignment` - กำหนดการจัดวางรูปภาพภายในพื้นที่
+- `repeat` - กำหนดรูปแบบการทำซ้ำรูปภาพหากขนาดเล็กกว่าพื้นที่
+- `semanticLabel` - กำหนดคำอธิบายรูปภาพสำหรับผู้ใช้ screen reader
+
+ตัวอย่างการใช้งาน Image:
+
+1. แสดงรูปภาพจาก asset bundle
+
+```dart
+Image(
+  image: AssetImage('assets/my_image.jpg'),
+  width: 200,
+  height: 200,
+  fit: BoxFit.cover,
+)
+```
+
+ในตัวอย่างนี้ เราแสดงรูปภาพ `my_image.jpg` ที่อยู่ในโฟลเดอร์ `assets` โดยกำหนดขนาดเป็น 200x200 และให้ scale รูปเต็มพื้นที่
+
+2. แสดงรูปภาพจาก network
+
+```dart
+Image.network(
+  'https://example.com/image.png',
+  width: 300,
+  height: 200,
+  fit: BoxFit.contain,
+)
+```
+
+ในตัวอย่างนี้ เราแสดงรูปภาพจาก URL `https://example.com/image.png` โดยกำหนดขนาดเป็น 300x200 และให้ scale รูปให้เห็นทั้งภาพโดยไม่ตัดขอบ
+
+3. แสดงรูปภาพจาก file system
+
+```dart
+Image.file(
+  File('/path/to/image.jpg'),
+  width: 150,
+  height: 150,
+  fit: BoxFit.fitWidth,
+)
+```
+
+ในตัวอย่างนี้ เราแสดงรูปภาพจากไฟล์ในเครื่อง โดยกำหนดขนาดเป็น 150x150 และให้ scale รูปให้พอดีความกว้าง
+
+นอกจากนี้ Image ยังมี constructor ย่อยอื่นๆ เช่น `Image.memory` สำหรับแสดงรูปจาก byte data ใน memory หรือ `Image.asset` ซึ่งเป็น shorthand ของการใช้ `AssetImage`
+
+Image เป็น widget ที่มีความสำคัญมากในการสร้าง UI ใน Flutter เพราะช่วยเพิ่มความสวยงามและดึงดูดใจให้กับแอป ทั้งยังสามารถปรับแต่งรูปภาพได้หลากหลายตามความต้องการ ซึ่งทำให้เราสามารถออกแบบหน้าจอที่มีเอกลักษณ์และน่าสนใจได้ง่ายขึ้น
+
+## Button
+
+ใน Flutter มี widget ประเภท Button หลายชนิดที่ใช้สำหรับสร้างปุ่มกดโต้ตอบกับผู้ใช้ โดยแต่ละชนิดมีลักษณะ พฤติกรรม และวิธีการใช้งานที่แตกต่างกัน ดังนี้
+
+1. ElevatedButton
+   ![elevated_button](/assets/images/7/elevated-button.png)
+   ElevatedButton เป็นปุ่มที่มีลักษณะนูนขึ้นมาจากพื้นผิว มีเงาและ ripple effect เมื่อกด เหมาะสำหรับเป็นปุ่ม action หลักในหน้าจอ
+
+   ```dart
+   ElevatedButton(
+     onPressed: () {
+       // รหัสที่ต้องการให้ทำงานเมื่อกดปุ่ม
+     },
+     child: Text('Click me'),
+   )
+   ```
+
+2. TextButton
+
+   ![text_button](/assets/images/7/text-button.png)
+
+   TextButton เป็นปุ่มข้อความธรรมดา ไม่มีพื้นหลังหรือเส้นขอบ ใช้สำหรับการ navigate หรือทำ action รอง
+
+   ```dart
+   TextButton(
+     onPressed: () {
+       // รหัสที่ต้องการให้ทำงานเมื่อกดปุ่ม
+     },
+     child: Text('Click me'),
+   )
+   ```
+
+3. OutlinedButton
+
+   ![outlined_button](/assets/images/7/outlined-button.png)
+
+   OutlinedButton เป็นปุ่มที่มีเส้นขอบ แต่ไม่มีพื้นหลัง เหมาะสำหรับปุ่มที่ไม่ใช่ action หลักแต่ต้องการความโดดเด่นมากกว่า TextButton
+
+   ```dart
+   OutlinedButton(
+     onPressed: () {
+       // รหัสที่ต้องการให้ทำงานเมื่อกดปุ่ม
+     },
+     child: Text('Click me'),
+   )
+   ```
+
+4. IconButton
+
+   ![icon_button](/assets/images/7/icon-button.png)
+
+   IconButton เป็นปุ่มที่แสดงเป็น icon ใช้สำหรับ action ย่อยหรือเสริม เช่น แชร์ กำหนดค่า ฯลฯ
+
+   ```dart
+   IconButton(
+     icon: Icon(Icons.share),
+     onPressed: () {
+       // รหัสที่ต้องการให้ทำงานเมื่อกดปุ่ม
+     },
+   )
+   ```
+
+5. FloatingActionButton
+
+   ![floating_action_button](/assets/images/7/floating-action-button.png)
+   FloatingActionButton เป็นปุ่มทรงกลมที่ลอยอยู่บนหน้าจอ มักอยู่มุมล่างขวา ใช้สำหรับ action หลักหรือพิเศษของหน้านั้นๆ
+
+   ```dart
+   FloatingActionButton(
+     onPressed: () {
+       // รหัสที่ต้องการให้ทำงานเมื่อกดปุ่ม
+     },
+     child: Icon(Icons.add),
+   )
+   ```
+
+6. DropdownButton
+
+   ![dropdown_button](/assets/images/7/dropdown-button.gif)
+
+   DropdownButton เป็น widget ใน Flutter ที่ใช้สำหรับแสดงรายการตัวเลือกแบบเลื่อนลงมาให้ผู้ใช้เลือก โดยปกติจะแสดงเป็นปุ่มที่มีข้อความของตัวเลือกที่ถูกเลือกอยู่ และเมื่อกดจะแสดงรายการตัวเลือกทั้งหมดให้เลือก
+
+   DropdownButton มีส่วนประกอบหลักดังนี้:
+
+   1. `value` - ค่าปัจจุบันที่ถูกเลือก
+   2. `items` - รายการตัวเลือกทั้งหมด เป็นลิสต์ของ DropdownMenuItem
+   3. `onChanged` - ฟังก์ชันที่จะถูกเรียกเมื่อผู้ใช้เลือกตัวเลือกใหม่
+
+   โดยมีตัวอย่างการใช้งานดังนี้:
+
+   ```dart
+   String selectedValue = 'Option 1';
+
+   DropdownButton<String>(
+     value: selectedValue,
+     items: <String>['Option 1', 'Option 2', 'Option 3']
+       .map<DropdownMenuItem<String>>((String value) {
+         return DropdownMenuItem<String>(
+           value: value,
+           child: Text(value),
+         );
+       }).toList(),
+     onChanged: (String? newValue) {
+       setState(() {
+         selectedValue = newValue!;
+       });
+     },
+   )
+   ```
+
+   ในตัวอย่างข้างต้น เราสร้าง DropdownButton ที่แสดงตัวเลือก 3 รายการ คือ 'Option 1', 'Option 2', 'Option 3' โดยเก็บค่าที่ถูกเลือกไว้ในตัวแปร `selectedValue` และเมื่อผู้ใช้เลือกตัวเลือกใหม่ ก็จะอัปเดตค่าใน `selectedValue` ผ่าน `setState`
+
+   นอกจากนี้ เรายังสามารถกำหนดลักษณะต่างๆ ของ DropdownButton ได้ เช่น:
+
+   - `hint` - ข้อความแสดงเมื่อยังไม่ได้เลือกอะไร
+   - `disabledHint` - ข้อความแสดงเมื่อปุ่มถูกปิดใช้งาน
+   - `elevation` - ระดับเงาของเมนูแบบเลื่อนลง
+   - `style` - สไตล์ของข้อความใน DropdownMenuItem
+   - `icon` - ไอคอนที่แสดงถัดจากข้อความที่เลือก
+   - `iconSize` - ขนาดของไอคอน
+   - `iconDisabledColor`, `iconEnabledColor` - สีไอคอนตอนปิด/เปิดใช้งาน
+   - `isDense` - ทำให้ความสูงของปุ่มลดลงเล็กน้อย
+   - `isExpanded` - ขยายความกว้างของปุ่มเต็มพื้นที่
+
+7. PopupMenuButton
+
+   ![Popup Button](/assets/images/7/popup-menu-button.gif)
+
+   PopupMenuButton เป็นอีกหนึ่ง widget ใน Flutter ที่ใช้สำหรับแสดงเมนูแบบเลื่อนขึ้นมาเมื่อกดปุ่ม ซึ่งเหมาะสำหรับการแสดงตัวเลือกหรือการกระทำที่เกี่ยวข้องกับ context นั้นๆ โดยทั่วไปมักใช้เป็นเมนู overflow หรือ contextual menu ที่มุมขวาบนของ AppBar หรือ ListTile
+
+   PopupMenuButton ประกอบด้วยส่วนสำคัญดังนี้:
+
+   1. `itemBuilder` - ฟังก์ชันที่สร้างรายการเมนูเป็น list ของ PopupMenuEntry
+   2. `onSelected` - ฟังก์ชันที่จะถูกเรียกเมื่อผู้ใช้เลือกรายการเมนู
+   3. `child` - ปุ่มหรือ widget ที่เมื่อกดแล้วจะแสดงเมนู
+
+   โดยมีตัวอย่างการใช้งานดังนี้:
+
+   ```dart
+   PopupMenuButton<String>(
+     itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+       const PopupMenuItem<String>(
+         value: 'Option 1',
+         child: Text('Option 1'),
+       ),
+       const PopupMenuItem<String>(
+         value: 'Option 2',
+         child: Text('Option 2'),
+       ),
+       const PopupMenuItem<String>(
+         value: 'Option 3',
+         child: Text('Option 3'),
+       ),
+     ],
+     onSelected: (String value) {
+       // รหัสที่ต้องการให้ทำงานเมื่อเลือกเมนู
+     },
+     child: Icon(Icons.more_vert),
+   )
+   ```
+
+   ในตัวอย่างนี้ เราสร้าง PopupMenuButton ที่มีไอคอน 'more_vert' เป็นปุ่ม เมื่อกดปุ่มจะแสดงเมนู 3 รายการ คือ 'Option 1', 'Option 2', 'Option 3' และเมื่อผู้ใช้เลือกรายการใดก็จะเรียกใช้ `onSelected` พร้อมส่งค่าที่เลือกไป
+
+   นอกจากนี้ ยังสามารถกำหนดคุณสมบัติอื่นๆ ของ PopupMenuButton ได้อีก เช่น
+
+   - `initialValue` - กำหนดค่าเริ่มต้นที่ถูกเลือก
+   - `elevation` - กำหนดระดับเงาของเมนู
+   - `padding` - กำหนดระยะห่างภายในของปุ่ม
+   - `icon` - กำหนด icon ของปุ่ม (ถ้าไม่ได้ระบุ child)
+   - `offset` - กำหนดตำแหน่งที่เมนูจะปรากฏ
+   - `enabled` - กำหนดว่าปุ่มสามารถกดได้หรือไม่
+   - `tooltip` - กำหนดข้อความแสดงตอนเอาเมาส์ชี้ที่ปุ่ม
+
+ทุกปุ่มสามารถกำหนดสไตล์หรือลักษณะเพิ่มเติมได้ผ่าน parameter อื่นๆ เช่น สี ขนาด รูปร่าง ฯลฯ เพื่อให้เข้ากับธีมและการออกแบบของแอป
+นอกจาก 5 ชนิดนี้แล้ว Flutter ยังมีปุ่มชนิดอื่นๆ อีก เช่น DropdownButton, PopupMenuButton, BackButton ซึ่งมีลักษณะการทำงานเฉพาะตัว เหมาะสำหรับ use case ที่แตกต่างกันไป
+
+การเลือกใช้ปุ่มให้เหมาะสมกับหน้าที่ ตำแหน่ง และบริบทการใช้งาน จะช่วยเพิ่มประสบการณ์ผู้ใช้และทำให้ UI น่าใช้งานมากยิ่งขึ้น ควบคู่ไปกับการออกแบบที่สวยงามและสอดคล้องกันทั้งแอป
+
+## GestureDetector & InkWell
+
+![GestureDetector & InkWell](/assets/images/7/guesture-detector-and-ink-well.gif)
+
+GestureDetector และ InkWell เป็น widget ใน Flutter ที่ใช้สำหรับตรวจจับการโต้ตอบแบบสัมผัสของผู้ใช้ เช่น การแตะ การลาก การเลื่อน เป็นต้น โดยมีจุดประสงค์และลักษณะการใช้งานที่คล้ายกัน แต่มีความแตกต่างในรายละเอียดปลีกย่อย
+
+1. GestureDetector
+   GestureDetector เป็น widget ที่ใช้ตรวจจับท่าทางสัมผัสแบบต่างๆ และเรียก callback function เมื่อเกิดเหตุการณ์ที่สอดคล้องกัน เหมาะสำหรับการสร้างส่วนโต้ตอบที่กำหนดเองหรือไม่มีใน widget มาตรฐาน
+
+```dart
+GestureDetector(
+  onTap: () {
+    // รหัสที่ต้องการให้ทำเมื่อผู้ใช้แตะ
+  },
+  onDoubleTap: () {
+    // รหัสที่ต้องการให้ทำเมื่อผู้ใช้แตะสองครั้ง
+  },
+  onLongPress: () {
+    // รหัสที่ต้องการให้ทำเมื่อผู้ใช้แตะค้าง
+  },
+  child: Container(
+    padding: EdgeInsets.all(24.0),
+    child: Text('Tap me!'),
+  ),
+)
+```
+
+2. InkWell
+   InkWell คล้ายกับ GestureDetector แต่เพิ่มเอฟเฟกต์ Material splash ให้กับ child widget เมื่อถูกแตะ ทำให้รู้สึกเหมือนปุ่มมากขึ้น เหมาะสำหรับการสร้างปุ่มที่มีผลตอบสนองแบบสัมผัส
+
+```dart
+InkWell(
+  onTap: () {
+    // รหัสที่ต้องการให้ทำเมื่อผู้ใช้แตะ
+  },
+  child: Container(
+    padding: EdgeInsets.all(12.0),
+    child: Text('Tap me!'),
+  ),
+)
+```
+
+ความแตกต่างสำคัญระหว่าง GestureDetector และ InkWell ได้แก่:
+
+- GestureDetector รองรับท่าทางที่หลากหลายกว่า เช่น ลาก ซูม หมุน ส่วน InkWell รองรับเฉพาะแตะ แตะสองครั้ง แตะค้าง
+- InkWell มีเอฟเฟกต์ splash ในตัว แต่ GestureDetector ไม่มี ต้องเพิ่มเองหากต้องการ
+- InkWell ใช้ Ink widget เป็น child โดยอัตโนมัติ ส่วน GestureDetector ใช้ Container หรืออะไรก็ได้
+- InkWell มีพารามิเตอร์ระบุสี, รัศมี, ขอบ ของ splash ได้ ส่วน GestureDetector ต้องปรับแต่งเอง
+- InkWell เหมาะกับการทำปุ่ม, ลิงก์ หรือองค์ประกอบ UI ที่มีหน้าตาคล้ายปุ่ม ส่วน GestureDetector เหมาะกับการทำอินเตอร์แอคชันที่ซับซ้อนกว่า
+
+โดยสรุป แนะนำให้ใช้ InkWell หากต้องการสร้างปุ่มหรือองค์ประกอบโต้ตอบพื้นฐานที่มีเอฟเฟกต์สวยงาม ส่วนใช้ GestureDetector เมื่อต้องจัดการกับเหตุการณ์สัมผัสที่ซับซ้อนหรือไม่มี widget สำเร็จรูปรองรับ
+
+การใช้ GestureDetector และ InkWell อย่างเหมาะสมจะช่วยให้แอปของคุณมีส่วนโต้ตอบที่ใช้งานง่าย ตอบสนองไว และสอดคล้องกับพฤติกรรมผู้ใช้ ทำให้ประสบการณ์การใช้งานโดยรวมดีขึ้นได้
