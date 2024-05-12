@@ -1,80 +1,4 @@
-# Flutter
-
-## โครงสร้าง Folder ของ Flutter
-
-หลังจากการสร้าง Project ของ Flutter ใหม่ Flutter จะทำการสร้างโครงสร้างไฟล์เหล่านี้ให้เราอย่างอัตโนมัติ:
-
-```
-flutter_app/
-├── android/
-├── ios/
-├── build/
-├── lib/
-│   ├── main.dart
-│   ├── screens/
-│   │   ├── home_screen.dart
-│   │   └── detail_screen.dart
-│   ├── widgets/
-│   │   ├── custom_button.dart
-│   │   └── custom_text.dart
-│   ├── models/
-│   │   └── user.dart
-│   ├── services/
-│   │   └── api_service.dart
-│   ├── utils/
-│   │   ├── constants.dart
-│   │   └── helpers.dart
-│   └── emoji/
-│       └── emoji_list.dart
-├── linux/
-├── macos/
-├── test/
-├── web/
-├── windows/
-├── .gitignore
-├── .metadata
-├── analysis_options.yaml
-├── assets/
-│   ├── images/
-│   └── fonts/
-├── pubspec.yaml
-└── README.md
-```
-
-1. `android/` และ `ios/`: โฟลเดอร์สำหรับไฟล์เฉพาะของ Android และ iOS เมื่อต้องการสร้าง native code หรือกำหนดค่าเฉพาะแพลตฟอร์ม
-
-2. `build/`: โฟลเดอร์ที่เก็บไฟล์ build ของแอปพลิเคชัน เมื่อทำการคอมไพล์และสร้างแอปพลิเคชัน
-
-3. `lib/`: โฟลเดอร์หลักที่เก็บโค้ด Dart ทั้งหมดสำหรับแอป Flutter
-
-   - `main.dart`: จุดเริ่มต้นของแอปพลิเคชัน กำหนด Root Widget และเรียกหน้าจอหลัก
-   - `screens/`: เก็บไฟล์ต่างๆ ที่แสดง UI ของแต่ละหน้าจอในแอป เช่น HomeScreen, DetailScreen
-   - `widgets/`: เก็บวิดเจ็ตที่ใช้ซ้ำในแอป เช่น ปุ่ม, ข้อความ เพื่อให้ใช้งานได้สะดวกมากขึ้น
-   - `models/`: เก็บคลาสโมเดลต่างๆ ที่ใช้ในแอป เช่น User model
-   - `services/`: เก็บไฟล์ที่เกี่ยวข้องกับเซอร์วิส เช่น การเรียก API
-   - `utils/`: เก็บไฟล์ helpers หรือ constants ที่ใช้ทั่วแอป
-   - `emoji/`: โฟลเดอร์ที่เก็บไฟล์ที่เกี่ยวข้องกับการจัดการ Emoji ในแอปพลิเคชัน
-
-4. `linux/`, `macos/`, `windows/` และ `web/`: โฟลเดอร์สำหรับแพลตฟอร์มอื่นๆ ที่ Flutter รองรับ เช่น Linux, macOS, Windows และ Web
-
-5. `test/`: โฟลเดอร์สำหรับเขียน unit tests, widget tests และ integration tests
-
-6. `.gitignore`: ไฟล์ที่ระบุว่าไฟล์หรือโฟลเดอร์ใดที่ไม่ต้องการให้ Git ติดตาม
-
-7. `.metadata`: ไฟล์เมตาดาต้าของโปรเจ็กต์ที่ Flutter ใช้ในการติดตามข้อมูลบางอย่าง
-
-8. `analysis_options.yaml`: ไฟล์กำหนดค่าสำหรับการวิเคราะห์โค้ด Dart เช่น กฎในการตรวจสอบโค้ด, ระดับความรุนแรงของ Linter เป็นต้น
-
-9. `assets/`: โฟลเดอร์เก็บไฟล์แอสเซท เช่น รูปภาพ, ไอคอน, ฟอนต์ ที่ใช้ในแอป
-
-   - `images/`: โฟลเดอร์สำหรับเก็บไฟล์รูปภาพ
-   - `fonts/`: โฟลเดอร์สำหรับเก็บไฟล์ฟอนต์
-
-10. `pubspec.yaml`: ไฟล์กำหนดการตั้งค่าของโปรเจ็กต์ Flutter เช่น ชื่อ, เวอร์ชัน, ไลบรารี่ที่ใช้, assets ต่างๆ เช่น fonts, images เป็นต้น
-
-11. `README.md`: ไฟล์สำหรับใส่คำอธิบายหรือเอกสารประกอบโปรเจ็กต์
-
-## Widget
+# Widget
 
 _"Everything is Widget"_ - ใน Flutter เกือบทุกอย่างเป็น Widget ที่นำมาประกอบกันเป็นส่วนให้แสดงผลบนหน้าจอ เช่น โครงสร้าง, ปุ่ม, ข้อความ, รูปภาพ, ไอคอน และอื่นๆ Widget เป็นส่วนประกอบพื้นฐานในการสร้าง UI ของแอป Flutter
 
@@ -422,32 +346,170 @@ MaterialApp
 
 การสร้าง Widget Tree ที่มีประสิทธิภาพ ควรแบ่งเป็น widget ย่อยๆ ตามหน้าที่และความรับผิดชอบ ไม่ควรรวมโค้ดไว้ที่ widget เดียวจนเกินไป เพื่อให้อ่านเข้าใจง่ายและสามารถนำ widget ไปใช้ซ้ำได้
 
-### Widget พื้นฐานของ Flutter
+## Widget พื้นฐานของ Flutter
 
 Widget พื้นฐานของ Flutter ที่มักจะใช้งานในการพัฒนาแอปพลิเคชันมีดังนี้
 
-- **Text**: ใช้สำหรับแสดงผลข้อความ โดยสามารถกำหนดรูปแบบ เช่น สี ขนาด ฟอนต์ การจัดวาง ฯลฯ ได้ผ่าน `TextStyle`
+## MaterailApp
 
-- **Row** และ **Column**: เป็น Widget ที่ใช้จัดวาง children widgets ในแนวนอน (Row) หรือแนวตั้ง (Column) คล้ายกับ Flexbox ใน CSS โดยสามารถกำหนดการจัดวาง ระยะห่าง ขนาด ของ children ได้ เช่น `MainAxisAlignment` และ `CrossAxisAlignment`
+![material-app.png](/assets/images/7/material-widget.png)
 
-- **Stack**: ใช้สำหรับวาง children widgets ซ้อนทับกันเป็นลำดับชั้น (layer) คล้ายกับ `position: absolute` ใน CSS โดยสามารถระบุตำแหน่งของ children ได้ด้วย `Positioned` widget
+MaterialApp เป็น widget ระดับบนสุดที่ใช้ในการสร้าง application ด้วย Flutter โดยมีหน้าที่หลักในการตั้งค่าและกำหนดรูปแบบให้กับ app ตามแนวทางของ Material Design
 
-- **Container**: เป็น widget ที่ใช้สร้างกล่องสี่เหลี่ยมที่มีพื้นหลัง สีขอบ ระยะขอบ (padding) รัศมีขอบโค้ง (border radius) เงา ฯลฯ ได้ คล้ายกับ `div` ใน HTML นอกจากนี้ยังสามารถกำหนด constraint ขนาดให้ child widget ได้ด้วย
+คุณสมบัติสำคัญของ MaterialApp ได้แก่:
 
-- **ListView**: ใช้แสดงรายการ (list) ของ widgets แบบเลื่อนได้ (scrollable) ในแนวตั้งหรือแนวนอน เหมาะสำหรับแสดงข้อมูลที่มีจำนวนมากหรือไม่แน่นอน สามารถใช้ `ListView.builder()` เพื่อสร้าง list อย่างมีประสิทธิภาพ
+1. `title` - ชื่อของ app ที่แสดงบน task manager หรือ app switcher
+2. `theme` - กำหนด theme ให้กับ app เช่น สี, font, shape ต่างๆ โดยใช้ ThemeData
+3. `home` - กำหนดหน้า (screen) แรกที่แสดงเมื่อเปิด app
+4. `routes` - กำหนด named routes สำหรับการนำทางไปยังหน้าต่างๆ ภายใน app
+5. `initialRoute` - กำหนด route เริ่มต้นสำหรับการนำทาง ถ้าไม่ได้กำหนดจะใช้หน้าจาก `home`
+6. `onGenerateRoute` - สร้าง route ในระหว่าง runtime ด้วย RouteSettings
+7. `debugShowMaterialGrid`, `showSemanticsDebugger` - แสดงตาราง grid และข้อมูล semantics เพื่อช่วยในการออกแบบ layout
+8. `locale`, `localizationsDelegates`, `supportedLocales` - ตั้งค่าที่เกี่ยวข้องกับ localization
 
-- **GridView**: ใช้แสดง widgets ในรูปแบบตาราง (grid) แบบเลื่อนได้ โดยสามารถกำหนดจำนวนคอลัมน์หรือความกว้างของแต่ละช่องได้ผ่าน `GridView.count()` หรือ `GridView.extent()`
+ตัวอย่างโครงสร้างพื้นฐานของการใช้งาน MaterialApp:
 
-- **Expanded**: เป็น widget ที่ใช้ขยายขนาดของ child widget ให้เต็มพื้นที่ว่างใน Row, Column หรือ Flex โดยสามารถกำหนดสัดส่วนการขยายได้ด้วย `flex` factor ช่วยให้จัดวาง widgets ได้ยืดหยุ่นขึ้น
+```dart
+import 'package:flutter/material.dart';
 
-- **Padding** และ **Margin**: ใช้เพิ่มระยะห่างภายใน (padding) หรือภายนอก (margin) ให้กับ widget โดย Padding เป็น widget ที่ครอบ child widget ส่วน Margin สามารถใช้ผ่าน `Container` หรือ `Padding`
+void main() {
+  runApp(MyApp());
+}
 
-- **IconButton** และ **ElevatedButton**: เป็น widget ปุ่มที่มีไอคอนหรือข้อความ ใช้สำหรับรับ user input ผ่านการกด (tap) โดย `IconButton` เน้นแสดงไอคอนเป็นหลัก ส่วน `ElevatedButton` มีลักษณะเป็นปุ่มยกสูง มีข้อความและสามารถกำหนดสีพื้นหลังและเอฟเฟกต์การกดได้
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My Flutter App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
 
-- **Image**: ใช้แสดงรูปภาพจาก asset, network หรือ file โดยสามารถกำหนดขนาด ตำแหน่ง สเกล ฯลฯ ได้ รวมถึงการแสดงรูปแบบเลื่อนได้ (scrollable) ด้วย `Image.network()`, `FadeInImage()` หรืออื่นๆ
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      body: Center(
+        child: Text('Hello, World!'),
+      ),
+    );
+  }
+}
+```
 
-- **GestureDetector**: เป็น widget ที่ใช้จับ gesture การสัมผัสของผู้ใช้ เช่น การแตะ (tap), การลาก (drag), การเลื่อน (swipe) ฯลฯ โดยสามารถครอบ widget อื่นๆ และกำหนด callback เมื่อเกิด gesture นั้นๆ
+ในตัวอย่างด้านบน MaterialApp ถูกใช้เป็น root widget ที่ครอบ MyHomePage ซึ่งเป็นหน้าหลักของ app โดย MaterialApp จะจัดการเรื่อง theme, title และ home widget ให้
 
-- **Form** และ **TextFormField**: ใช้สร้างฟอร์มสำหรับรับข้อมูลจากผู้ใช้ โดย Form เป็น widget ที่ครอบฟิลด์ต่างๆ เช่น `TextFormField` สำหรับรับข้อมูลข้อความ ซึ่งมีฟีเจอร์ตรวจสอบความถูกต้อง (validation) ของข้อมูลด้วย
+นอกจาก MaterialApp แล้ว Flutter ยังมี CupertinoApp ซึ่งเป็น widget สำหรับสร้าง app ตามแบบ iOS ที่มีโครงสร้างและคุณสมบัติคล้ายกับ MaterialApp
 
-นอกจากนี้ Flutter ยังมี widgets อื่นๆ อีกมากมาย เช่น `BottomNavigationBar`, `Drawer`, `Tab`, `DataTable`, `Chart` ฯลฯ ซึ่งสามารถนำมาประกอบกันเพื่อสร้าง UI ของแอปพลิเคชันได้หลากหลายรูปแบบตามต้องการ
+สรุปคือ MaterialApp เป็นจุดเริ่มต้นในการสร้าง app ด้วย Flutter ที่มี design ตามแนวทาง Material ช่วยจัดการเรื่องพื้นฐาน เช่น routing, theming, localization ให้ เราจึงสามารถโฟกัสไปที่การออกแบบ UI ที่น่าสนใจและใช้งานได้จริงได้อย่างเต็มที่
+
+## CupertinoApp
+
+![CupertinoApp](/assets/images/7/cupertino-widget.png)
+
+CupertinoApp เป็น widget ของ Flutter ที่ใช้สร้าง application ตามแบบ iOS ซึ่งมีลักษณะคล้ายกับ MaterialApp ที่ใช้สำหรับสร้าง app แบบ Android โดย CupertinoApp จะมี widget และ component ต่างๆ ที่ออกแบบมาให้เข้ากับ design language ของ Apple
+
+คุณสมบัติหลักของ CupertinoApp ได้แก่:
+
+1. `home` - กำหนดหน้าแรกของ app
+2. `theme` - กำหนด theme ของ app ด้วย CupertinoThemeData เช่น สี, font ต่างๆ
+3. `routes` - กำหนด named routes สำหรับการนำทางระหว่างหน้า
+4. `initialRoute` - กำหนด route เริ่มต้น ถ้าไม่ได้ระบุจะใช้หน้าจาก `home`
+5. `onGenerateRoute` - สร้าง route ขณะ runtime โดยใช้ RouteSettings
+6. `localizationsDelegates`, `supportedLocales`, `locale` - ตั้งค่าเกี่ยวกับ localization
+7. `debugShowCheckedModeBanner` - ควบคุมการแสดง "debug" banner ที่มุมขวาบน
+
+ตัวอย่างโครงสร้างพื้นฐานของ CupertinoApp:
+
+```dart
+import 'package:flutter/cupertino.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoApp(
+      title: 'My Cupertino App',
+      theme: CupertinoThemeData(
+        primaryColor: CupertinoColors.activeBlue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text('Home Page'),
+      ),
+      child: Center(
+        child: Text('Hello, World!'),
+      ),
+    );
+  }
+}
+```
+
+ในตัวอย่างข้างต้น เราใช้ CupertinoApp เป็น root widget และกำหนด theme ด้วย CupertinoThemeData โดยหน้าหลักจะเป็น MyHomePage ที่ใช้ CupertinoPageScaffold และ CupertinoNavigationBar เป็นองค์ประกอบหลัก ซึ่งจะให้ look and feel เหมือนกับ app บน iOS
+
+การใช้ CupertinoApp ร่วมกับ widget อื่นๆ เช่น CupertinoTabScaffold, CupertinoTextField, CupertinoButton, CupertinoDatePicker จะช่วยให้เราสร้าง app ที่มีหน้าตาและ interaction ตามมาตรฐานของ iOS ได้อย่างสมบูรณ์แบบ
+
+อย่างไรก็ตาม ในการพัฒนา app ด้วย Flutter เราสามารถใช้ widget จากทั้ง Material และ Cupertino ร่วมกันได้ เพื่อให้สามารถปรับแต่ง design ของ app ได้ตามความต้องการ และรองรับผู้ใช้งานบนแพลตฟอร์มที่หลากหลายมากขึ้น
+
+## Scaffold
+
+Scaffold เป็น widget หลักที่ใช้สร้าง layout ของหน้า (screen) ใน Flutter โดยมีโครงสร้างพื้นฐานประกอบด้วยส่วนต่างๆ ที่จำเป็น เช่น app bar, body, bottom navigation bar, floating action button, drawer ฯลฯ
+
+ส่วนประกอบหลักของ Scaffold ได้แก่:
+
+1. `appBar` - แถบด้านบนของหน้าจอ ใช้วาง title, action buttons, menu เป็นต้น
+2. `body` - ส่วนเนื้อหาหลักของหน้า วาง widget ที่แสดงข้อมูลหรือ UI ต่างๆ
+3. `bottomNavigationBar` - แถบด้านล่างสำหรับสร้างเมนูหรือปุ่มนำทาง
+4. `floatingActionButton` - ปุ่มลอยที่มักอยู่มุมขวาล่าง ใช้สำหรับ action หลักของหน้านั้นๆ
+5. `drawer` - ลิ้นชักด้านข้างที่เลื่อนออกมาจากทางซ้ายของหน้าจอ ใช้วางเมนูหรือตัวเลือกเพิ่มเติม
+6. `backgroundColor`, `backgroundImage` - กำหนดสีหรือรูปภาพพื้นหลังให้กับ Scaffold
+7. `bottomSheet`, `drawerScrimColor`, `persistentFooterButtons` ฯลฯ
+
+ตัวอย่างการใช้งาน Scaffold เบื้องต้น:
+
+```dart
+Scaffold(
+  appBar: AppBar(
+    title: Text('My App'),
+  ),
+  body: Center(
+    child: Text('Hello, World!'),
+  ),
+  floatingActionButton: FloatingActionButton(
+    onPressed: () {},
+    child: Icon(Icons.add),
+  ),
+  bottomNavigationBar: BottomNavigationBar(
+    items: [
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'Home',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.settings),
+        label: 'Settings',
+      ),
+    ],
+  ),
+)
+```
+
+Scaffold มีประโยชน์ในการจัดวางโครงสร้างพื้นฐานของหน้า UI ตามรูปแบบของ Material Design ช่วยให้สร้าง app ที่มีหน้าตาสวยงาม เป็นมาตรฐาน และใช้งานง่าย โดยเราสามารถกำหนดส่วนประกอบต่างๆ ผ่าน properties ของ Scaffold ได้อย่างยืดหยุ่น
