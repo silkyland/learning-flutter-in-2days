@@ -1094,3 +1094,7 @@ InkWell(
 โดยสรุป แนะนำให้ใช้ InkWell หากต้องการสร้างปุ่มหรือองค์ประกอบโต้ตอบพื้นฐานที่มีเอฟเฟกต์สวยงาม ส่วนใช้ GestureDetector เมื่อต้องจัดการกับเหตุการณ์สัมผัสที่ซับซ้อนหรือไม่มี widget สำเร็จรูปรองรับ
 
 การใช้ GestureDetector และ InkWell อย่างเหมาะสมจะช่วยให้แอปของคุณมีส่วนโต้ตอบที่ใช้งานง่าย ตอบสนองไว และสอดคล้องกับพฤติกรรมผู้ใช้ ทำให้ประสบการณ์การใช้งานโดยรวมดีขึ้นได้
+
+## Scrolling และ List
+
+![SingleChildScrollView](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczgyenp2YWJhdzE0djFuaWZzODF2ZWhpMTQweTlsMnc4MTA4cDhvNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hFIOvegdpEW6268k2N/giphy.gif)
