@@ -1098,9 +1098,9 @@ InkWell(
 
 การใช้ GestureDetector และ InkWell อย่างเหมาะสมจะช่วยให้แอปของคุณมีส่วนโต้ตอบที่ใช้งานง่าย ตอบสนองไว และสอดคล้องกับพฤติกรรมผู้ใช้ ทำให้ประสบการณ์การใช้งานโดยรวมดีขึ้นได้
 
-## Scrolling และ List
+## Scrolling Widgets
 
-### SingleChildScrollView
+### 1. SingleChildScrollView
 
 ![SingleChildScrollView](/assets/images/7/single-child-scroll-view.gif)
 
@@ -1162,7 +1162,7 @@ SingleChildScrollView(
 )
 ```
 
-### ListView
+### 2. ListView
 
 ![ListView](/assets/images/7/listview.gif)
 
@@ -1220,3 +1220,609 @@ ListView.builder(
 - `ListView.separated()`: สร้างรายการพร้อมกับ separator ระหว่างแต่ละรายการ
 - `ListView.custom()`: สร้างรายการด้วย SliverChildDelegate อย่างยืดหยุ่น
 - `ListView.builder()` ร่วมกับ `itemExtent`: สร้างรายการที่มีขนาดคงที่อย่างมีประสิทธิภาพ
+
+### 3. GridView
+
+![GridView](/assets/images/7/gridview.gif)
+
+GridView เป็น widget ใน Flutter ที่ใช้สร้างรายการ (list) ของ widget ในรูปแบบตาราง (grid) ที่เรียงต่อกันเป็นแถวและคอลัมน์ โดยรองรับการเลื่อน (scroll) เมื่อมีรายการมากเกินกว่าขนาดของหน้าจอ GridView เหมาะสำหรับการแสดงรายการข้อมูลที่มีลักษณะเป็นกริด เช่น รูปภาพ, สินค้า, ไอคอน เป็นต้น
+
+คุณสมบัติสำคัญของ GridView ได้แก่:
+
+1. สร้างรายการในรูปแบบกริดที่เลื่อนได้อย่างมีประสิทธิภาพ โดยใช้เทคนิค lazy loading เช่นเดียวกับ ListView
+2. มีคอนสตรัคเตอร์หลายแบบที่ช่วยให้สร้างกริดได้ง่าย ได้แก่ `GridView.count()`, `GridView.extent()`, และ `GridView.builder()`
+3. สามารถกำหนดจำนวนคอลัมน์หรือขนาดของช่องกริดได้ตามต้องการ
+4. สามารถกำหนดทิศทางการเลื่อนได้ผ่าน `scrollDirection` พารามิเตอร์
+5. ใช้งานร่วมกับ ScrollController เพื่อควบคุมการเลื่อนแบบกำหนดเอง
+
+ตัวอย่างการสร้าง GridView ด้วย `GridView.count()`:
+
+```dart
+GridView.count(
+  crossAxisCount: 3,
+  children: List.generate(100, (index) {
+    return Center(
+      child: Text(
+        'Item $index',
+        style: Theme.of(context).textTheme.headline5,
+      ),
+    );
+  }),
+)
+```
+
+ในตัวอย่างนี้ เราใช้ `GridView.count()` ในการสร้างกริดที่มี 3 คอลัมน์ โดยมีรายการทั้งหมด 100 รายการ ซึ่งสร้างจากการเรียกใช้ `List.generate()`
+
+ตัวอย่างการสร้าง GridView ด้วย `GridView.builder()`:
+
+```dart
+GridView.builder(
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+  ),
+  itemCount: 100,
+  itemBuilder: (context, index) {
+    return Card(
+      color: Colors.amber,
+      child: Center(child: Text('$index')),
+    );
+  }
+)
+```
+
+ในตัวอย่างนี้ เราใช้ `GridView.builder()` ในการสร้างกริดแบบไดนามิก โดยกำหนด `gridDelegate` เป็น `SliverGridDelegateWithFixedCrossAxisCount` ที่มี 3 คอลัมน์ และสร้างรายการด้วย `itemBuilder` ที่รับ `index` เป็นพารามิเตอร์
+
+นอกจากนี้ GridView ยังมีคอนสตรัคเตอร์อื่นๆ ที่มีประโยชน์ เช่น:
+
+- `GridView.extent()`: สร้างกริดที่มีขนาดช่องคงที่ตาม `maxCrossAxisExtent`
+- `GridView.custom()`: สร้างกริดด้วย SliverGridDelegate อย่างยืดหยุ่น
+
+### 4. CustomScrollView
+
+![CustomScrollView](/assets/images/7/custom-scroll-view.gif)
+
+CustomScrollView เป็น widget ใน Flutter ที่ใช้สร้างส่วนเลื่อน (scrollable area) ที่มีความยืดหยุ่นสูง โดยสามารถประกอบเข้ากับ Sliver widget ต่างๆ เพื่อสร้างหน้าจอที่มีองค์ประกอบหลากหลายและซับซ้อน
+
+คุณสมบัติสำคัญของ CustomScrollView ได้แก่:
+
+1. `slivers` - รับ list ของ Sliver widget ที่จะแสดงภายใน CustomScrollView เรียงตามลำดับ
+2. `scrollDirection` - กำหนดทิศทางการเลื่อน (แนวตั้งหรือแนวนอน)
+3. `reverse` - กำหนดให้เลื่อนจากท้ายไปหัวแทนการเลื่อนจากหัวไปท้าย
+4. `controller` - กำหนด ScrollController เพื่อควบคุมพฤติกรรมการเลื่อน
+5. `physics` - กำหนด ScrollPhysics เพื่อปรับแต่งลักษณะการเลื่อน เช่น การดีดกลับ ความหนืด เป็นต้น
+6. `shrinkWrap` - กำหนดให้ CustomScrollView มีขนาดตามเนื้อหาภายใน (true) หรือขยายเต็มพื้นที่ (false)
+
+ตัวอย่างการใช้งาน CustomScrollView:
+
+```dart
+CustomScrollView(
+  slivers: [
+    SliverAppBar(
+      title: Text('My App'),
+      expandedHeight: 200.0,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Image.network(
+          'https://example.com/header.jpg',
+          fit: BoxFit.cover,
+        ),
+      ),
+    ),
+    SliverPadding(
+      padding: const EdgeInsets.all(16.0),
+      sliver: SliverList(
+        delegate: SliverChildListDelegate([
+          Text('Section 1'),
+          SizedBox(height: 8.0),
+          Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit.'),
+          SizedBox(height: 16.0),
+          Text('Section 2'),
+          SizedBox(height: 8.0),
+          Text('Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+        ]),
+      ),
+    ),
+    SliverGrid(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 10.0,
+        childAspectRatio: 1.5,
+      ),
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          return Container(
+            alignment: Alignment.center,
+            color: Colors.teal[100 * (index % 9)],
+            child: Text('Grid Item $index'),
+          );
+        },
+        childCount: 10,
+      ),
+    ),
+  ],
+)
+```
+
+ในตัวอย่างนี้ CustomScrollView ประกอบด้วย Sliver widget หลายชนิด ได้แก่:
+
+- SliverAppBar - แสดงแถบ app bar ที่ยุบและขยายได้
+- SliverPadding - เพิ่มระยะห่างให้กับ sliver ที่อยู่ภายใน
+- SliverList - แสดงรายการ widget แบบ list
+- SliverGrid - แสดงตาราง widget แบบ grid
+
+โดยทุก Sliver จะถูกเรียงลำดับและแสดงผลภายใน CustomScrollView ทำให้ได้หน้าจอที่มีองค์ประกอบหลากหลายและสามารถเลื่อนดูได้อย่างราบรื่น
+
+CustomScrollView เป็น widget ที่ทรงพลังและยืดหยุ่นสูงสำหรับการสร้าง scrollable UI ใน Flutter ช่วยให้สามารถออกแบบหน้าจอที่ซับซ้อนและมีองค์ประกอบที่หลากหลาย โดยใช้ Sliver widget ต่างๆ เข้ามาประกอบกันตามต้องการ ทำให้ได้ UI ที่สวยงาม ใช้งานสะดวก และมีประสิทธิภาพในการแสดงผลสูง
+
+### Sliver Family หรือ Sliver Widgets
+
+Sliver widget มักถูกเรียกว่า "Sliver Family" หรือ "Sliver Widgets" ซึ่งเป็นกลุ่ม widget ที่ออกแบบมาเพื่อใช้งานร่วมกับ CustomScrollView โดยเฉพาะ โดยมีจุดประสงค์เพื่อสร้างส่วนประกอบต่างๆ ของหน้าเลื่อนที่มีความยืดหยุ่นและประสิทธิภาพสูง
+
+Sliver widget แต่ละตัวมีหน้าที่และลักษณะการทำงานที่แตกต่างกัน ดังนี้:
+
+1. SliverList
+
+- Widget ที่ใช้สร้างรายการ (list) ใน CustomScrollView
+- มีลักษณะคล้าย ListView แต่เหมาะสำหรับการใช้งานใน sliver
+- ตัวอย่าง:
+  ```dart
+  CustomScrollView(
+    slivers: [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return ListTile(title: Text('Item $index'));
+          },
+          childCount: 20,
+        ),
+      ),
+    ],
+  )
+  ```
+
+2. SliverGrid
+
+   - Widget ที่ใช้สร้างตาราง (grid) ใน CustomScrollView
+   - มีลักษณะคล้าย GridView แต่เหมาะสำหรับการใช้งานใน sliver
+   - ตัวอย่าง:
+     ```dart
+     CustomScrollView(
+       slivers: [
+         SliverGrid(
+           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+             crossAxisCount: 2,
+           ),
+           delegate: SliverChildBuilderDelegate(
+             (context, index) {
+               return Container(
+                 alignment: Alignment.center,
+                 color: Colors.teal[100 * (index % 9)],
+                 child: Text('Grid Item $index'),
+               );
+             },
+             childCount: 20,
+           ),
+         ),
+       ],
+     )
+     ```
+
+3. SliverAppBar
+
+   - Widget ที่ใช้สร้าง app bar แบบ collapsible ใน CustomScrollView
+   - สามารถย่อและขยายได้เมื่อมีการเลื่อนเนื้อหา
+   - ตัวอย่าง:
+     ```dart
+     CustomScrollView(
+       slivers: [
+         SliverAppBar(
+           title: Text('Collapsing App Bar'),
+           expandedHeight: 200.0,
+           flexibleSpace: FlexibleSpaceBar(
+             background: Image.network(
+               'https://example.com/image.jpg',
+               fit: BoxFit.cover,
+             ),
+           ),
+         ),
+         // ...
+       ],
+     )
+     ```
+
+4. SliverPersistentHeader
+
+   - Widget ที่ใช้สร้างส่วนหัว (header) ที่คงอยู่เสมอใน CustomScrollView
+   - สามารถกำหนดส่วนหัวให้มีขนาดคงที่หรือขยายได้ตามการเลื่อน
+   - ตัวอย่าง:
+     ```dart
+     CustomScrollView(
+       slivers: [
+         SliverPersistentHeader(
+           delegate: _SliverAppBarDelegate(
+             minHeight: 60.0,
+             maxHeight: 200.0,
+             child: Container(
+               color: Colors.blue,
+               child: Center(
+                 child: Text(
+                   'Persistent Header',
+                   style: TextStyle(color: Colors.white),
+                 ),
+               ),
+             ),
+           ),
+           pinned: true,
+         ),
+         // ...
+       ],
+     )
+     ```
+
+5. SliverFillRemaining
+
+   - Widget ที่ใช้เติมเต็มพื้นที่ว่างที่เหลือใน CustomScrollView
+   - มักใช้เป็น sliver สุดท้ายเพื่อแสดงข้อมูลหรือ widget เพิ่มเติม
+   - ตัวอย่าง:
+     ```dart
+     CustomScrollView(
+       slivers: [
+         // ...
+         SliverFillRemaining(
+           hasScrollBody: false,
+           child: Container(
+             color: Colors.blue,
+             child: Center(
+               child: Text(
+                 'Footer',
+                 style: TextStyle(color: Colors.white),
+               ),
+             ),
+           ),
+         ),
+       ],
+     )
+     ```
+
+6. SliverToBoxAdapter
+   - Widget ที่ใช้แปลง widget ทั่วไปให้เป็น sliver เพื่อใช้ใน CustomScrollView
+   - ช่วยให้สามารถใส่ widget ที่ไม่ใช่ sliver โดยเฉพาะลงใน CustomScrollView ได้
+   - ตัวอย่าง:
+     ```dart
+     CustomScrollView(
+       slivers: [
+         SliverToBoxAdapter(
+           child: Container(
+             height: 200.0,
+             color: Colors.green,
+             child: Center(
+               child: Text(
+                 'Box Adapter',
+                 style: TextStyle(color: Colors.white),
+               ),
+             ),
+           ),
+         ),
+         // ...
+       ],
+     )
+     ```
+
+## ScrollController
+
+ScrollController เป็น class ใน Flutter ที่ใช้ในการควบคุมและติดตามสถานะการเลื่อน (scroll) ของ scrollable widget เช่น ListView, GridView, SingleChildScrollView เป็นต้น โดย ScrollController จะให้ข้อมูลและเมธอดที่เกี่ยวข้องกับการเลื่อน ซึ่งเราสามารถนำไปใช้ในการกำหนดพฤติกรรมหรือตอบสนองต่อเหตุการณ์ต่างๆ ที่เกิดขึ้นระหว่างการเลื่อนได้
+
+คุณสมบัติสำคัญของ ScrollController ได้แก่:
+
+1. `offset`: ให้ค่าตำแหน่งปัจจุบันของการเลื่อน ในหน่วย logical pixel
+2. `jumpTo()`: ใช้ในการเลื่อนไปยังตำแหน่งที่กำหนดทันที โดยไม่มีภาพเคลื่อนไหว
+3. `animateTo()`: ใช้ในการเลื่อนไปยังตำแหน่งที่กำหนดแบบมีภาพเคลื่อนไหว
+4. `addListener()`: ใช้ในการลงทะเบียนฟังก์ชันเพื่อตอบสนองต่อการเปลี่ยนแปลงสถานะการเลื่อน
+5. `removeListener()`: ใช้ในการยกเลิกการลงทะเบียนฟังก์ชัน listener
+6. `dispose()`: ใช้ในการทำลาย ScrollController เมื่อไม่ต้องการใช้งานแล้ว
+
+ตัวอย่างการใช้งาน ScrollController:
+
+```dart
+final ScrollController _scrollController = ScrollController();
+
+@override
+void initState() {
+  super.initState();
+  _scrollController.addListener(_scrollListener);
+}
+
+@override
+void dispose() {
+  _scrollController.dispose();
+  super.dispose();
+}
+
+void _scrollListener() {
+  if (_scrollController.offset >= _scrollController.position.maxScrollExtent &&
+      !_scrollController.position.outOfRange) {
+    setState(() {
+      print("reach the bottom");
+    });
+  }
+  if (_scrollController.offset <= _scrollController.position.minScrollExtent &&
+      !_scrollController.position.outOfRange) {
+    setState(() {
+      print("reach the top");
+    });
+  }
+}
+
+@override
+Widget build(BuildContext context) {
+  return ListView.builder(
+    controller: _scrollController,
+    itemCount: 100,
+    itemBuilder: (context, index) {
+      return ListTile(title: Text('Item $index'));
+    },
+  );
+}
+```
+
+ในตัวอย่างนี้ เราสร้าง `ScrollController` ในชื่อ `_scrollController` และนำไปใช้กับ `ListView.builder` ผ่าน `controller` พารามิเตอร์
+
+เรายังได้ลงทะเบียน listener ในเมธอด `initState()` ผ่าน `_scrollController.addListener()` เพื่อติดตามการเปลี่ยนแปลงสถานะการเลื่อน โดยในฟังก์ชัน `_scrollListener` เราได้ตรวจสอบว่าการเลื่อนได้ถึงจุดสุดท้ายหรือจุดเริ่มต้นของ ListView หรือไม่ ผ่านการเปรียบเทียบค่า `offset` กับ `maxScrollExtent` และ `minScrollExtent`
+
+และในเมธอด `dispose()` เราได้เรียก `_scrollController.dispose()` เพื่อคืนทรัพยากรที่ ScrollController ใช้เมื่อไม่ต้องการแล้ว
+
+ScrollController ยังมีประโยชน์ในหลายกรณี เช่น:
+
+- ต้องการเลื่อนไปยังตำแหน่งที่กำหนดใน scrollable widget
+- ต้องการโหลดข้อมูลเพิ่มเติมเมื่อเลื่อนถึงจุดสุดท้ายของรายการ (infinite scrolling)
+- ต้องการตรวจสอบว่าผู้ใช้กำลังเลื่อนขึ้นหรือลง และตอบสนองต่อการเลื่อนนั้น
+- ต้องการซิงโครไนซ์การเลื่อนระหว่างหลาย scrollable widget
+
+### RefreshIndicator
+
+- Widget ที่ใช้เพิ่มความสามารถ pull-to-refresh ให้กับ scrollable widget
+- แสดงสัญลักษณ์ loading เมื่อผู้ใช้ดึงลงเพื่อรีเฟรชข้อมูล
+- ตัวอย่าง:
+  ```dart
+  RefreshIndicator(
+    onRefresh: _refreshData,
+    child: ListView.builder(...),
+  )
+  ```
+
+### Scrollbar
+
+- Widget ที่ใช้แสดงแถบเลื่อน (scrollbar) สำหรับ scrollable widget
+- ช่วยให้ผู้ใช้ทราบตำแหน่งปัจจุบันและขนาดของเนื้อหาที่สามารถเลื่อนได้
+- ตัวอย่าง:
+  ```dart
+  Scrollbar(
+    child: GridView.count(...),
+  )
+  ```
+
+### Infinite scrolling
+
+- เทคนิคที่ใช้ในการโหลดข้อมูลเพิ่มเติมเมื่อผู้ใช้เลื่อนถึงจุดสุดท้ายของรายการ
+- ช่วยให้แสดงผลข้อมูลจำนวนมากได้อย่างราบรื่นโดยไม่ต้องโหลดทั้งหมดในครั้งเดียว
+- ตัวอย่าง: ใช้ ScrollController เพื่อตรวจสอบตำแหน่งการเลื่อนและโหลดข้อมูลเพิ่มเติม
+
+### Pull-to-refresh
+
+- เทคนิคที่ใช้ในการรีเฟรชหรืออัปเดตข้อมูลโดยการดึงรายการลงจากด้านบนสุด
+- ช่วยให้ผู้ใช้สามารถอัปเดตข้อมูลได้อย่างสะดวกโดยไม่ต้องรีโหลดทั้งหน้า
+- ตัวอย่าง: ใช้ RefreshIndicator ร่วมกับ scrollable widget เพื่อเพิ่มความสามารถ pull-to-refresh
+
+### Pagination
+
+- เทคนิคการแบ่งข้อมูลออกเป็นหน้าย่อยๆ และโหลดที่ละหน้าเมื่อผู้ใช้เลื่อนดู
+- ช่วยเพิ่มประสิทธิภาพในการโหลดและแสดงผลข้อมูลจำนวนมาก
+- ตัวอย่าง: ใช้ ScrollController เพื่อตรวจสอบตำแหน่งการเลื่อนและโหลดหน้าถัดไป ร่วมกับการจัดการสถานะการโหลดและแสดงผลในแอป
+
+## Routing & Navigation
+
+เนื้อหา Navigation & Routing ใน Flutter ครอบคลุมถึงการจัดการการนำทางระหว่างหน้า (screens) ต่างๆ ภายในแอปพลิเคชัน รวมทั้งการส่งผ่านข้อมูลระหว่างหน้าด้วย โดยมีหัวข้อสำคัญดังนี้
+
+1. Navigator
+
+   - เป็น widget ที่ใช้จัดการ stack ของหน้าในแอป
+   - ใช้ Navigator.push() เพื่อเปิดหน้าใหม่ และ Navigator.pop() เพื่อกลับหน้าเดิม
+   - ตัวอย่างการใช้งาน:
+     ```dart
+     Navigator.push(
+       context,
+       MaterialPageRoute(builder: (context) => SecondScreen()),
+     );
+     ```
+
+2. Named Routes
+
+   - กำหนดชื่อให้กับเส้นทาง (route) แต่ละเส้นทางในแอป
+   - ใช้ Navigator.pushNamed() และ Navigator.popUntil() ในการนำทางผ่านชื่อเส้นทาง
+   - ตัวอย่างการกำหนด named routes:
+     ```dart
+     MaterialApp(
+       initialRoute: '/',
+       routes: {
+         '/': (context) => FirstScreen(),
+         '/second': (context) => SecondScreen(),
+       },
+     )
+     ```
+
+3. Route Arguments
+
+   - ใช้สำหรับส่งข้อมูลจากหน้าหนึ่งไปยังอีกหน้าหนึ่งผ่าน arguments ของ route
+   - ตัวอย่างการส่งและรับ route arguments:
+
+     ```dart
+     // Sending arguments
+     Navigator.pushNamed(
+       context,
+       '/second',
+       arguments: 'Hello from the first screen!',
+     );
+
+     // Receiving arguments
+     final String message = ModalRoute.of(context).settings.arguments;
+     ```
+
+4. Returning Data
+
+   - สำหรับการส่งข้อมูลกลับจากหน้าที่เปิดไปยังหน้าที่เรียกเปิด
+   - ใช้ async/await กับ Navigator.push() ที่รอรับค่าจาก Navigator.pop() ของหน้าปลายทาง
+   - ตัวอย่าง:
+
+     ```dart
+     // Opening a new screen and waiting for data
+     final result = await Navigator.push(
+       context,
+       MaterialPageRoute(builder: (context) => DataEntryScreen()),
+     );
+
+     // Returning data to the previous screen
+     Navigator.pop(context, 'Data from the second screen');
+     ```
+
+5. Nested Navigation
+
+   - จัดการ navigation ย่อยภายในส่วนต่างๆ ของแอป เช่น ใน tab หรือ drawer
+   - ใช้ Navigator ย่อยร่วมกับ GlobalKey เพื่อควบคุมการนำทางแยกกันในแต่ละส่วน
+   - ตัวอย่างการสร้าง nested navigation ใน BottomNavigationBar:
+
+     ```dart
+     final _navigatorKeys = [
+       GlobalKey<NavigatorState>(),
+       GlobalKey<NavigatorState>(),
+     ];
+
+     int _currentIndex = 0;
+
+     Widget build(BuildContext context) {
+       return Scaffold(
+         body: IndexedStack(
+           index: _currentIndex,
+           children: [
+             Navigator(
+               key: _navigatorKeys[0],
+               onGenerateRoute: (settings) => MaterialPageRoute(
+                 builder: (context) => Screen1(),
+               ),
+             ),
+             Navigator(
+               key: _navigatorKeys[1],
+               onGenerateRoute: (settings) => MaterialPageRoute(
+                 builder: (context) => Screen2(),
+               ),
+             ),
+           ],
+         ),
+         bottomNavigationBar: BottomNavigationBar(
+           currentIndex: _currentIndex,
+           onTap: (index) {
+             setState(() => _currentIndex = index);
+           },
+           items: [
+             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Tab 1'),
+             BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Tab 2'),
+           ],
+         ),
+       );
+     }
+     ```
+
+### Named Routes กับการใช้งานจริง
+
+สร้างไฟล์ `route_generater.dart` ดังนี้
+
+```dart
+class RouteGenerator {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    final args = settings.arguments;
+    switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case '/wizard':
+        return MaterialPageRoute(builder: (_) => const WizardScreen());
+      case '/home':
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => const SignInScreen());
+      case '/register':
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      default:
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+    }
+  }
+}
+```
+
+การส่งข้อมูล (arguments) ไปยังหน้าต่างๆ ได้โดยใช้ `settings.arguments` ใน `RouteGenerator.generateRoute()` และส่งข้อมูลผ่านพารามิเตอร์ `arguments` ใน `Navigator.pushNamed()`
+
+ตัวอย่างการส่ง arguments ไปยังหน้า HomeScreen:
+
+1. เพิ่มพารามิเตอร์ `args` ในคอนสตรัคเตอร์ของ HomeScreen
+
+   ```dart
+   class HomeScreen extends StatelessWidget {
+     final String username;
+     const HomeScreen({Key? key, required this.username}) : super(key: key);
+
+     @override
+     Widget build(BuildContext context) {
+       // ...
+     }
+   }
+   ```
+
+2. แก้ไข `RouteGenerator.generateRoute()` เพื่อส่ง `args` ไปยัง HomeScreen
+
+   ```dart
+   case '/home':
+     if (args is String) {
+       return MaterialPageRoute(builder: (_) => HomeScreen(username: args));
+     }
+     return _errorRoute();
+   ```
+
+3. ส่ง arguments ผ่าน `Navigator.pushNamed()` เมื่อต้องการเปิดหน้า HomeScreen
+   ```dart
+   Navigator.pushNamed(
+     context,
+     '/home',
+     arguments: 'John Doe',
+   );
+   ```
+
+ในตัวอย่างข้างต้น เราส่งข้อมูล `'John Doe'` เป็น argument ผ่าน `Navigator.pushNamed()` จากนั้นใน `RouteGenerator.generateRoute()` เรา type-check ว่า `args` เป็น `String` หรือไม่ ถ้าใช่ เราจะส่งค่านั้นไปยังคอนสตรัคเตอร์ของ HomeScreen ผ่านพารามิเตอร์ `username`
+
+หากต้องการส่งข้อมูลที่ซับซ้อนกว่า `String` สามารถสร้าง class สำหรับเก็บข้อมูลที่ต้องการส่งได้ เช่น:
+
+```dart
+class HomeScreenArguments {
+  final String username;
+  final int age;
+
+  HomeScreenArguments(this.username, this.age);
+}
+```
+
+จากนั้นใช้ `HomeScreenArguments` ในการส่งและรับข้อมูลแทน:
+
+```dart
+// ส่งข้อมูล
+Navigator.pushNamed(
+  context,
+  '/home',
+  arguments: HomeScreenArguments('John Doe', 25),
+);
+
+// รับข้อมูล
+case '/home':
+  if (args is HomeScreenArguments) {
+    return MaterialPageRoute(builder: (_) => HomeScreen(username: args.username, age: args.age));
+  }
+  return _errorRoute();
+```
+
+โดยสรุป การส่ง arguments ระหว่างเส้นทางใน Flutter ทำได้โดยใช้ `arguments` พารามิเตอร์ของ `Navigator.pushNamed()` และ `settings.arguments` ภายใน `RouteGenerator.generateRoute()` ร่วมกับการ type-check และส่งต่อข้อมูลไปยังหน้าปลายทางผ่านคอนสตรัคเตอร์ของ widget นั้นๆ ซึ่งช่วยให้สามารถส่งผ่านข้อมูลระหว่างหน้าจอได้อย่างยืดหยุ่นและมีประสิทธิภาพ
