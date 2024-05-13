@@ -470,3 +470,398 @@ class MyApp extends StatelessWidget {
 ![alt text](/assets/images/11/card.png)
 
 Card เป็น Widget ที่นิยมใช้กันอย่างแพร่หลายใน Material Design เนื่องจากช่วยให้ UI มีความสวยงาม เป็นระเบียบ และง่ายต่อการอ่านข้อมูล นอกจากนี้ ยังสามารถกำหนดสีพื้นหลัง ขนาด ความโค้งมนของขอบ และ Elevation ได้ตามต้องการอีกด้วย
+
+## ListTile Widget
+
+ListTile เป็น Widget ที่ใช้ในการแสดงแถวของข้อมูลในรูปแบบของรายการ (List) โดยปกติจะประกอบไปด้วยไอคอนหรือรูปภาพ ข้อความหัวเรื่อง (title) และข้อความรายละเอียด (subtitle) ซึ่ง ListTile มักถูกใช้ร่วมกับ ListView หรือ Column เพื่อแสดงรายการข้อมูลแบบเรียงลำดับ
+
+ListTile มีส่วนประกอบหลักๆ ดังนี้
+
+- `leading`: วิดเจ็ตที่แสดงด้านซ้ายของ ListTile เช่น ไอคอนหรือรูปภาพ
+- `title`: ข้อความหัวเรื่องของ ListTile
+- `subtitle`: ข้อความรายละเอียดของ ListTile
+- `trailing`: วิดเจ็ตที่แสดงด้านขวาของ ListTile เช่น ไอคอนหรือปุ่ม
+- `onTap`: callback function ที่จะถูกเรียกเมื่อผู้ใช้แตะบน ListTile
+
+ตัวอย่างการใช้งาน ListTile:
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('ListTile Example'),
+        ),
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              leading: const Icon(Icons.map),
+              title: const Text('Map'),
+              subtitle: const Text('Google Map'),
+              onTap: () {
+                // ทำอะไรบางอย่างเมื่อ ListTile ถูกแตะ
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_album),
+              title: const Text('Album'),
+              subtitle: const Text('image gallery'),
+              onTap: () {
+                // ทำอะไรบางอย่างเมื่อ ListTile ถูกแตะ
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.phone),
+              title: const Text('Phone'),
+              subtitle: const Text('Call'),
+              onTap: () {
+                // ทำอะไรบางอย่างเมื่อ ListTile ถูกแตะ
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.contacts),
+              title: const Text('Contacts'),
+              subtitle: const Text('Contact list'),
+              onTap: () {
+                // ทำอะไรบางอย่างเมื่อ ListTile ถูกแตะ
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              subtitle: const Text('App settings'),
+              onTap: () {
+                // ทำอะไรบางอย่างเมื่อ ListTile ถูกแตะ
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+ในตัวอย่างนี้ เราสร้าง ListView ที่มี ListTile หลายๆ อันเป็น children โดยแต่ละ ListTile จะมีไอคอนที่แตกต่างกันและข้อความหัวเรื่องที่ต่างกัน และเมื่อผู้ใช้แตะบน ListTile แต่ละอัน ก็จะเรียก callback function ที่กำหนดไว้ใน `onTap` (ในตัวอย่างนี้ ยังไม่ได้กำหนด callback function ไว้)
+
+เมื่อ run โค้ดนี้ คุณจะเห็นหน้าจอที่มีรายการ ListTile หลายๆ อัน ซึ่งสามารถเลื่อนขึ้นลงเพื่อดูรายการทั้งหมดได้ และเมื่อแตะบน ListTile แต่ละอัน ก็จะสามารถตอบสนองต่อการกระทำนั้นได้ตามที่กำหนดใน callback function
+
+ผลลัพธ์ที่ได้คือ:
+
+![alt text](/assets/images/11/listtile.png)
+
+ListTile เป็น Widget ที่มีประโยชน์มากในการสร้าง UI ที่เป็นรายการข้อมูล เนื่องจากช่วยให้สามารถจัดรูปแบบและแสดงข้อมูลได้อย่างเป็นระเบียบ อีกทั้งยังสามารถกำหนดการตอบสนองต่อการกระทำของผู้ใช้ได้อย่างง่ายดายอีกด้วย
+
+## สร้าง Layout จาก Design
+
+<img src="https://docs.flutter.dev/assets/images/docs/ui/layout/layout-demo-app.png" width="500">
+
+### วาดแผนผังเค้าโครง
+
+1. ลองออกแบบในความคิดว่าองค์ประกอบของ Layout หลักๆ คืออะไรบ้าง และจะวางอย่างไร
+
+   <img src='https://docs.flutter.dev/assets/images/docs/ui/layout/layout-sketch-intro.svg' width='500'>
+
+2. ในแต่ละ Row หรือ Column จะมีองค์ประกอบอะไรบ้าง
+
+   ![alt text](/assets/images/11/inside-row-column.png)
+
+### การเขียนโค้ด
+
+1.  สร้าง project ใหม่ แล้วแทนที่ Code ใน `main.dart` ด้วยโค้ดด้านล่าง
+
+    ```dart
+    import 'package:flutter/material.dart';
+
+    void main() => runApp(const MyApp());
+
+    class MyApp extends StatelessWidget {
+      const MyApp({super.key});
+
+      @override
+      Widget build(BuildContext context) {
+        const String appTitle = 'Flutter layout demo';
+        return MaterialApp(
+          title: appTitle,
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Text(appTitle),
+            ),
+            body: const Center(
+              child: Text('Hello World'),
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+2.  สร้างไฟล์ `title_section.dart` ใน folder `lib/sections` เพิ่ม `TitleSection` widget ที่จะใช้ในการแสดงข้อมูลหัวเรื่อง
+
+     <img src="https://docs.flutter.dev/assets/images/docs/ui/layout/layout-sketch-title-block-unlabeled.svg" width="500">
+
+```dart
+class TitleSection extends StatelessWidget {
+    const TitleSection({
+      super.key,
+      required this.name,
+      required this.location,
+    });
+
+    final String name;
+    final String location;
+
+    @override
+    Widget build(BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.all(32),
+        child: Row(
+          children: [
+            Expanded(
+              /*1*/
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /*2*/
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    location,
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            /*3*/
+            Icon(
+              Icons.star,
+              color: Colors.red[500],
+            ),
+            const Text('41'),
+          ],
+        ),
+      );
+    }
+  }
+```
+
+3.เปลี่ยน `body` ใน `MyApp` ให้เป็น `SingleChildScrollView` และเพิ่ม `TitleSection` ลงไป
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const String appTitle = 'Flutter layout demo';
+    return MaterialApp(
+      title: appTitle,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(appTitle),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: const [
+              TitleSection(
+                name: 'Oeschinen Lake Campground',
+                location: 'Kandersteg, Switzerland',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+4. สร้างไฟล์ `button_section.dart` ใน folder `lib/sections` เพิ่ม `ButtonSection` widget ที่จะใช้ในการแสดงปุ่ม
+
+```dart
+class ButtonSection extends StatelessWidget {
+  const ButtonSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Color color = Theme.of(context).primaryColor;
+    return SizedBox(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          ButtonWithText(
+            color: color,
+            icon: Icons.call,
+            label: 'CALL',
+          ),
+          ButtonWithText(
+            color: color,
+            icon: Icons.near_me,
+            label: 'ROUTE',
+          ),
+          ButtonWithText(
+            color: color,
+            icon: Icons.share,
+            label: 'SHARE',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ButtonWithText extends StatelessWidget {
+  const ButtonWithText({
+    super.key,
+    required this.color,
+    required this.icon,
+    required this.label,
+  });
+
+  final Color color;
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Padding(
+          padding: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    )
+  }
+}
+```
+
+5. แก้ไข `body` ใน `MyApp` ให้เพิ่ม `ButtonSection` ลงไป
+
+```dart
+...
+body: SingleChildScrollView(
+  child: Column(
+    children: const [
+      TitleSection(
+        name: 'Oeschinen Lake Campground',
+        location: 'Kandersteg, Switzerland',
+      ),
+      ButtonSection(), // Add this line
+  ),
+),
+...
+```
+
+6. สร้างไฟล์ `text_section.dart` ใน folder `lib/sections` เพิ่ม `TextSection` widget ที่จะใช้ในการแสดงข้อความ
+
+```dart
+
+class TextSection extends StatelessWidget {
+  const TextSection({
+    super.key,
+    required this.description,
+  });
+
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        description,
+        softWrap: true,
+      ),
+    );
+  }
+}
+```
+
+7. แก้ไข `body` ใน `MyApp` ให้เพิ่ม `TextSection` ลงไป
+
+```dart
+...
+body: SingleChildScrollView(
+  child: Column(
+    children: const [
+      TitleSection(
+        name: 'Oeschinen Lake Campground',
+        location: 'Kandersteg, Switzerland',
+      ),
+      ButtonSection(),
+      TextSection(
+        description: 'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+            'Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine '
+            'lakes. A gondola ride from Kandersteg, followed by a half-hour walk through '
+            'pastures and pine forest, leads you to the lake, which warms to 20 degrees '
+            'Celsius in the summer. Activities enjoyed here include rowing, and riding '
+            'the summer toboggan run.',
+      ),
+    ],
+  ),
+),
+...
+```
+
+8. สร้างไฟล์ `image_section.dart` ใน folder `lib/sections` เพิ่ม `ImageSection` widget ที่จะใช้ในการแสดงรูปภาพ
+
+```dart
+class ImageSection extends StatelessWidget {
+  const ImageSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      'assets/images/lake.jpg',
+      width: 600,
+      height: 240,
+      fit: BoxFit.cover,
+    );
+  }
+}
+```
+
+- สร้างโฟลเดอร์ `assets/images` และเพิ่มรูปภาพ `lake.jpg` ลงไป ดาวน์โหลดได้ [ที่นี่](https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg)
+
+  <img src="https://raw.githubusercontent.com/flutter/website/main/examples/layout/lakes/step5/images/lake.jpg" width="500">
+
+- แก้ไข `pubspec.yaml` เพิ่ม path ของรูปภาพ
+
+  ```yaml
+  flutter:
+    assets:
+      - assets/images/lake.jpg
+  ```
+
+9. ทำการ Run โค้ด และตรวจสอบผลลัพธ์
