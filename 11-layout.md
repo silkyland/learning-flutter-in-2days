@@ -864,4 +864,31 @@ class ImageSection extends StatelessWidget {
       - assets/images/lake.jpg
   ```
 
-9. ทำการ Run โค้ด และตรวจสอบผลลัพธ์
+9. แก้ไข `body` ใน `MyApp` ให้เพิ่ม `ImageSection` ลงไป
+
+```dart
+...
+body: SingleChildScrollView(
+  child: Column(
+    children: const [
+      ImageSection(),
+      TitleSection(
+        name: 'Oeschinen Lake Campground',
+        location: 'Kandersteg, Switzerland',
+      ),
+      ButtonSection(),
+      TextSection(
+        description: 'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
+            'Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine '
+            'lakes. A gondola ride from Kandersteg, followed by a half-hour walk through '
+            'pastures and pine forest, leads you to the lake, which warms to 20 degrees '
+            'Celsius in the summer. Activities enjoyed here include rowing, and riding '
+            'the summer toboggan run.',
+      ),
+    ],
+  ),
+),
+...
+```
+
+10. ทำการ Run โค้ด และตรวจสอบผลลัพธ์
