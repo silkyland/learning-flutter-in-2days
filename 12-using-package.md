@@ -54,7 +54,7 @@ http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 
 ## Practice
 
-ให้ผู้เข้าร่วมอบรม ติดตั้งและใช้งาน package `card_swiper` กันครับ โดย `card_swiper` เป็น package ที่ช่วยให้เราสร้าง `image slider` หรือ `carousel` ได้อย่างสวยงามและใช้งานง่าย
+ให้ผู้เข้าร่วมอบรม ติดตั้งและใช้งาน package `card_swiper` โดย `card_swiper` เป็น package ที่ช่วยให้เราสร้าง `image slider` หรือ `carousel` ได้อย่างสวยงามและใช้งานง่าย
 
 ![Card Swiper](/assets/images/practice/package.png)
 
@@ -69,7 +69,7 @@ dependencies:
   card_swiper: ^3.0.1
 ```
 
-ได้ครับ มาทำแบบฝึกหัดในการติดตั้งและใช้งาน package card_swiper กันครับ โดย card_swiper เป็น package ที่ช่วยให้เราสร้าง image slider หรือ carousel ได้อย่างสวยงามและใช้งานง่าย
+มาทำแบบฝึกหัดในการติดตั้งและใช้งาน package card_swiper โดย card_swiper เป็น package ที่ช่วยให้เราสร้าง image slider หรือ carousel ได้อย่างสวยงามและใช้งานง่าย
 
 ขั้นตอนมีดังนี้:
 
@@ -168,6 +168,4 @@ class MyApp extends StatelessWidget {
 8. เรียกใช้ GoogleFontsDemo ใน main.dart เพื่อแสดงผลการทำงาน
 9. รันแอปและดูผลลัพธ์
 
-เมื่อทำเสร็จแล้ว ให้ส่งโค้ดใน Dart pad หรือ GitHub gist มาให้ตรวจสอบผลงานครับ
-
-หวังว่าโจทย์นี้จะช่วยให้ผู้เข้าอบรมได้ฝึกทักษะการติดตั้งและใช้งาน package ใน Flutter นะครับ ลองให้ทุกคนได้ทำดู ถ้ามีคำถามหรือข้อสงสัยเพิ่มเติมสามารถถามได้เลยครับ
+ส่งงานโดยการ commit โค้ดที่เขียนไว้และ push ขึ้น branch ของตัวเอง บน GitHub แล้วส่งลิ้งค์ไปยังอีเมล์ของผู้สอน
