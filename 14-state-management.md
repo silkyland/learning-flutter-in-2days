@@ -369,3 +369,5 @@ class CartScreen extends StatelessWidget {
 เวลาเพิ่มสินค้าลงตระกร้าจาก ProductListScreen เราก็เรียก `Provider.of<CartModel>(context, listen: false).addItem()` เพื่อเพิ่มสินค้าลงใน `_items` และใช้ `listen: false` เพื่อไม่ต้อง rebuild
 
 ส่วนใน CartScreen เราใช้ Consumer เพื่อรับ `CartModel` มาแสดงผลจำนวนและราคารวมของสินค้าในตระกร้าได้แบบ real-time เมื่อมีการเปลี่ยนแปลง เช่น เพิ่มหรือลบสินค้า
+
+สามารถดูตัวอย่างที่สมบูรณ์ได้จาก [https://github.com/silkyland/flutter_example_provider_example](https://github.com/silkyland/flutter_example_provider_example)
