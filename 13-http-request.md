@@ -121,6 +121,16 @@ lib/
   |- main.dart
 ```
 
+รูปแบบ Json ของ Todo Model:
+
+```json
+{
+  "id": 1,
+  "title": "Todo 1",
+  "completed": false
+}
+```
+
 1. สร้าง Data Model ใน `lib/models/todo_model.dart`:
 
 ```dart
