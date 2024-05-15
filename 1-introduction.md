@@ -1,8 +1,23 @@
+---
+marp: true
+theme: gaia
+_class: lead
+paginate: true
+backgroundColor: #fff
+backgroundImage: url('https://marp.app/assets/hero-background.svg')
+---
+
+<style>
+
+</style>
+
 # บทนำสู่ Flutter
 
 ## Flutter คืออะไร?
 
 Flutter เป็นชุดเครื่องมือพัฒนาซอฟต์แวร์ UI แบบโอเพนซอร์สที่สร้างโดย Google ซึ่งช่วยให้นักพัฒนาสามารถสร้างแอปพลิเคชันที่คอมไพล์แบบเนทีฟสำหรับแพลตฟอร์มมือถือ เว็บ และเดสก์ท็อป จากโค้ดฐานเดียว Flutter ใช้ภาษาโปรแกรม Dart ซึ่งพัฒนาโดย Google เช่นกัน
+
+---
 
 ### คุณสมบัติสำคัญ
 
@@ -18,9 +33,13 @@ Flutter เป็นชุดเครื่องมือพัฒนาซอ
 
 6. **ชุมชนนักพัฒนาที่เข้มแข็ง**: Flutter มีชุมชนนักพัฒนาที่เติบโตอย่างรวดเร็วและกระตือรือร้น ซึ่งมีส่วนช่วยในการสร้างแพ็คเกจและไลบรารีจำนวนมากที่ขยายความสามารถของ Flutter นอกจากนี้ยังมีทรัพยากรและบทช่วยสอนมากมายที่ช่วยให้นักพัฒนาเรียนรู้และแก้ปัญหาได้
 
+---
+
 ### **สถาปัตยกรรมของ Flutter**
 
-![Flutter Architecture](https://docs.flutter.dev/assets/images/docs/arch-overview/archdiagram.png)
+![width:700px left](https://docs.flutter.dev/assets/images/docs/arch-overview/archdiagram.png)
+
+---
 
 Flutter ประกอบด้วยชั้นสถาปัตยกรรมหลัก 3 ชั้น:
 
