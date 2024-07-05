@@ -1,0 +1,435 @@
+<svg aria-roledescription="er" role="graphics-document document"
+    style="overflow: hidden; max-width: 100%;" xmlns="http://www.w3.org/2000/svg" width="100%"
+    id="graph-div" height="100%" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ev="http://www.w3.org/2001/xml-events">
+    <style>@import
+        url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");'</style>
+    <defs>
+        <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="0"
+            id="MD_PARENT_START">
+            <path d="M 18,7 L9,13 L1,7 L9,1 Z"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="19"
+            id="MD_PARENT_END">
+            <path d="M 18,7 L9,13 L1,7 L9,1 Z"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="0"
+            id="ONLY_ONE_START">
+            <path d="M9,0 L9,18 M15,0 L15,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="18"
+            id="ONLY_ONE_END">
+            <path d="M3,0 L3,18 M9,0 L9,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="0"
+            id="ZERO_OR_ONE_START">
+            <circle r="6" cy="9" cx="21" fill="white" stroke="gray"></circle>
+            <path d="M9,0 L9,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="30"
+            id="ZERO_OR_ONE_END">
+            <circle r="6" cy="9" cx="9" fill="white" stroke="gray"></circle>
+            <path d="M21,0 L21,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="18"
+            id="ONE_OR_MORE_START">
+            <path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="27"
+            id="ONE_OR_MORE_END">
+            <path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="18"
+            id="ZERO_OR_MORE_START">
+            <circle r="6" cy="18" cx="48" fill="white" stroke="gray"></circle>
+            <path d="M0,18 Q18,0 36,18 Q18,36 0,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <defs>
+        <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="39"
+            id="ZERO_OR_MORE_END">
+            <circle r="6" cy="18" cx="9" fill="white" stroke="gray"></circle>
+            <path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"></path>
+        </marker>
+    </defs>
+    <g id="viewport-20240705135215940" class="svg-pan-zoom_viewport"
+        transform="matrix(1.7031116262791939,0,0,1.7031116262791939,263.89938143159327,0)"
+        style="transform: matrix(1.70311, 0, 0, 1.70311, 263.899, 0);">
+        <style>#graph-div{font-family:"trebuchet
+            ms",verdana,arial,sans-serif;font-size:12px;fill:#333;}#graph-div
+            .error-icon{fill:hsl(60, 90%, 100%);}#graph-div .error-text{fill:rgb(0, 0,
+            0);stroke:rgb(0, 0, 0);}#graph-div .edge-thickness-normal{stroke-width:2px;}#graph-div
+            .edge-thickness-thick{stroke-width:3.5px;}#graph-div
+            .edge-pattern-solid{stroke-dasharray:0;}#graph-div
+            .edge-pattern-dashed{stroke-dasharray:3;}#graph-div
+            .edge-pattern-dotted{stroke-dasharray:2;}#graph-div
+            .marker{fill:#0b0b0b;stroke:#0b0b0b;}#graph-div .marker.cross{stroke:#0b0b0b;}#graph-div
+            svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;}#graph-div
+            .entityBox{fill:#ECECFE;stroke:#BCBCFB;}#graph-div
+            .attributeBoxOdd{fill:#ffffff;stroke:#BCBCFB;}#graph-div
+            .attributeBoxEven{fill:#f2f2f2;stroke:#BCBCFB;}#graph-div
+            .relationshipLabelBox{fill:hsl(60, 90%, 100%);opacity:0.7;background-color:hsl(60, 90%,
+            100%);}#graph-div .relationshipLabelBox rect{opacity:0.5;}#graph-div
+            .relationshipLine{stroke:#0b0b0b;}#graph-div
+            .entityTitleText{text-anchor:middle;font-size:18px;fill:#333;}#graph-div
+            #MD_PARENT_START{fill:#f5f5f5!important;stroke:#0b0b0b!important;stroke-width:1;}#graph-div
+            #MD_PARENT_END{fill:#f5f5f5!important;stroke:#0b0b0b!important;stroke-width:1;}#graph-div
+            :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+        <g></g>
+        <path marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)"
+            style="stroke: gray; fill: none;"
+            d="M51.284,128.586L45.124,136.92C38.963,145.253,26.642,161.92,20.481,187.635C14.321,213.351,14.321,248.115,14.321,282.879C14.321,317.644,14.321,352.408,18.709,378.124C23.098,403.839,31.875,420.506,36.263,428.839L40.652,437.173"
+            class="er relationshipLine"></path>
+        <path marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)"
+            style="stroke: gray; fill: none;"
+            d="M131.559,128.586L137.72,136.92C143.881,145.253,156.202,161.92,162.363,178.586C168.523,195.253,168.523,211.92,168.523,220.253L168.523,228.586"
+            class="er relationshipLine"></path>
+        <path marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)"
+            style="stroke: gray; fill: none;"
+            d="M168.523,337.173L168.523,345.506C168.523,353.839,168.523,370.506,164.135,387.173C159.746,403.839,150.969,420.506,146.581,428.839L142.192,437.173"
+            class="er relationshipLine"></path>
+        <g transform="translate(31.273948669433594,20 )"
+            id="entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93">
+            <rect height="108.58633041381836" width="120.29585266113281" y="0" x="0"
+                class="er entityBox"></rect>
+            <text transform="translate(60.147926330566406,12)"
+                style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93" class="er entityLabel">
+                USERS</text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="24" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-1-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.14658260345459" width="55.359375" y="24" x="41.32710266113281"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(46.32710266113281,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-1-name"
+                class="er entityLabel">id</text>
+            <rect height="21.14658260345459" width="23.609375" y="24" x="96.68647766113281"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(101.68647766113281,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-1-key"
+                class="er entityLabel">PK</text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="45.14658260345459" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-2-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="55.359375" y="45.14658260345459"
+                x="41.32710266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(46.32710266113281,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-2-name"
+                class="er entityLabel">username</text>
+            <rect height="21.14658260345459" width="23.609375" y="45.14658260345459"
+                x="96.68647766113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(101.68647766113281,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-2-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="66.29316520690918" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-3-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="55.359375" y="66.29316520690918"
+                x="41.32710266113281" class="er attributeBoxOdd"></rect>
+            <text transform="translate(46.32710266113281,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-3-name"
+                class="er entityLabel">password</text>
+            <rect height="21.14658260345459" width="23.609375" y="66.29316520690918"
+                x="96.68647766113281" class="er attributeBoxOdd"></rect>
+            <text transform="translate(101.68647766113281,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-3-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="87.43974781036377" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-4-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="55.359375" y="87.43974781036377"
+                x="41.32710266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(46.32710266113281,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-4-name"
+                class="er entityLabel">email</text>
+            <rect height="21.14658260345459" width="23.609375" y="87.43974781036377"
+                x="96.68647766113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(101.68647766113281,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-USERS-1e82e395-936c-57a7-8ba9-b08f03574b93-attr-4-key"
+                class="er entityLabel"></text>
+        </g>
+        <g transform="translate(20,437.1726531982422 )"
+            id="entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c">
+            <rect height="192.8140697479248" width="142.84375" y="0" x="0" class="er entityBox"></rect>
+            <text transform="translate(71.421875,12)"
+                style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c" class="er entityLabel">
+                TODOS</text>
+            <rect height="21.14658260345459" width="49.125" y="24" x="0" class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-1-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.14658260345459" width="70.109375" y="24" x="49.125"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(54.125,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-1-name"
+                class="er entityLabel">id</text>
+            <rect height="21.14658260345459" width="23.609375" y="24" x="119.234375"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(124.234375,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-1-key"
+                class="er entityLabel">PK</text>
+            <rect height="21.14658260345459" width="49.125" y="45.14658260345459" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-2-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="70.109375" y="45.14658260345459" x="49.125"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(54.125,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-2-name"
+                class="er entityLabel">title</text>
+            <rect height="21.14658260345459" width="23.609375" y="45.14658260345459" x="119.234375"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(124.234375,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-2-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="49.125" y="66.29316520690918" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-3-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="70.109375" y="66.29316520690918" x="49.125"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(54.125,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-3-name"
+                class="er entityLabel">description</text>
+            <rect height="21.14658260345459" width="23.609375" y="66.29316520690918" x="119.234375"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(124.234375,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-3-key"
+                class="er entityLabel"></text>
+            <rect height="21.02705192565918" width="49.125" y="87.43974781036377" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,97.95327377319336)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-4-type"
+                class="er entityLabel">boolean</text>
+            <rect height="21.02705192565918" width="70.109375" y="87.43974781036377" x="49.125"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(54.125,97.95327377319336)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-4-name"
+                class="er entityLabel">is_completed</text>
+            <rect height="21.02705192565918" width="23.609375" y="87.43974781036377" x="119.234375"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(124.234375,97.95327377319336)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-4-key"
+                class="er entityLabel"></text>
+            <rect height="21.02705192565918" width="49.125" y="108.46679973602295" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,118.98032569885254)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-5-type"
+                class="er entityLabel">datetime</text>
+            <rect height="21.02705192565918" width="70.109375" y="108.46679973602295" x="49.125"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(54.125,118.98032569885254)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-5-name"
+                class="er entityLabel">created_at</text>
+            <rect height="21.02705192565918" width="23.609375" y="108.46679973602295" x="119.234375"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(124.234375,118.98032569885254)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-5-key"
+                class="er entityLabel"></text>
+            <rect height="21.02705192565918" width="49.125" y="129.49385166168213" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,140.00737762451172)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-6-type"
+                class="er entityLabel">datetime</text>
+            <rect height="21.02705192565918" width="70.109375" y="129.49385166168213" x="49.125"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(54.125,140.00737762451172)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-6-name"
+                class="er entityLabel">updated_at</text>
+            <rect height="21.02705192565918" width="23.609375" y="129.49385166168213" x="119.234375"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(124.234375,140.00737762451172)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-6-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="49.125" y="150.5209035873413" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,161.0941948890686)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-7-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.14658260345459" width="70.109375" y="150.5209035873413" x="49.125"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(54.125,161.0941948890686)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-7-name"
+                class="er entityLabel">user_id</text>
+            <rect height="21.14658260345459" width="23.609375" y="150.5209035873413" x="119.234375"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(124.234375,161.0941948890686)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-7-key"
+                class="er entityLabel">FK</text>
+            <rect height="21.146583557128906" width="49.125" y="171.6674861907959" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,182.24077796936035)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-8-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.146583557128906" width="70.109375" y="171.6674861907959" x="49.125"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(54.125,182.24077796936035)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-8-name"
+                class="er entityLabel">category_id</text>
+            <rect height="21.146583557128906" width="23.609375" y="171.6674861907959" x="119.234375"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(124.234375,182.24077796936035)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-TODOS-7f87dfb1-800c-5e1b-9565-cfd034706c7c-attr-8-key"
+                class="er entityLabel">FK</text>
+        </g>
+        <g transform="translate(114.3205680847168,228.5863265991211 )"
+            id="entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7">
+            <rect height="108.58633041381836" width="108.40522766113281" y="0" x="0"
+                class="er entityBox"></rect>
+            <text transform="translate(54.202613830566406,12)"
+                style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7"
+                class="er entityLabel">CATEGORIES</text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="24" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-1-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.14658260345459" width="43.46875" y="24" x="41.32710266113281"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(46.32710266113281,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-1-name"
+                class="er entityLabel">id</text>
+            <rect height="21.14658260345459" width="23.609375" y="24" x="84.79585266113281"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(89.79585266113281,34.573291301727295)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-1-key"
+                class="er entityLabel">PK</text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="45.14658260345459" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-2-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="43.46875" y="45.14658260345459"
+                x="41.32710266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(46.32710266113281,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-2-name"
+                class="er entityLabel">name</text>
+            <rect height="21.14658260345459" width="23.609375" y="45.14658260345459"
+                x="84.79585266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(89.79585266113281,55.719873905181885)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-2-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="66.29316520690918" x="0"
+                class="er attributeBoxOdd"></rect>
+            <text transform="translate(5,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-3-type"
+                class="er entityLabel">string</text>
+            <rect height="21.14658260345459" width="43.46875" y="66.29316520690918"
+                x="41.32710266113281" class="er attributeBoxOdd"></rect>
+            <text transform="translate(46.32710266113281,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-3-name"
+                class="er entityLabel">color</text>
+            <rect height="21.14658260345459" width="23.609375" y="66.29316520690918"
+                x="84.79585266113281" class="er attributeBoxOdd"></rect>
+            <text transform="translate(89.79585266113281,76.86645650863647)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-3-key"
+                class="er entityLabel"></text>
+            <rect height="21.14658260345459" width="41.32710266113281" y="87.43974781036377" x="0"
+                class="er attributeBoxEven"></rect>
+            <text transform="translate(5,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-4-type"
+                class="er entityLabel">integer</text>
+            <rect height="21.14658260345459" width="43.46875" y="87.43974781036377"
+                x="41.32710266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(46.32710266113281,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-4-name"
+                class="er entityLabel">user_id</text>
+            <rect height="21.14658260345459" width="23.609375" y="87.43974781036377"
+                x="84.79585266113281" class="er attributeBoxEven"></rect>
+            <text transform="translate(89.79585266113281,98.01303911209106)"
+                style="dominant-baseline: middle; font-size: 10.2px;" y="0" x="0"
+                id="text-entity-CATEGORIES-051115c8-8701-5ef2-9611-ff1fd9eaa4b7-attr-4-key"
+                class="er entityLabel">FK</text>
+        </g>
+        <rect height="14" width="39.359375" y="273.86322021484375" x="-5.358222007751465"
+            class="er relationshipLabelBox"></rect>
+        <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;"
+            y="280.86322021484375" x="14.321465492248535" id="rel1" class="er relationshipLabel">
+            creates</text>
+        <rect height="14" width="39.359375" y="167.75550842285156" x="141.16262817382812"
+            class="er relationshipLabelBox"></rect>
+        <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;"
+            y="174.75550842285156" x="160.84231567382812" id="rel2" class="er relationshipLabel">
+            creates</text>
+        <rect height="14" width="19.359375" y="382.2839660644531" x="153.876220703125"
+            class="er relationshipLabelBox"></rect>
+        <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;"
+            y="389.2839660644531" x="163.555908203125" id="rel3" class="er relationshipLabel">has</text>
+    </g>
+</svg>
