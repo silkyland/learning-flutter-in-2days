@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- หน้าล็อกอิน -->
+    <rect x="50" y="50" width="200" height="300" fill="#f0f0f0" stroke="#000000" stroke-width="2" />
+    <text x="150" y="80" font-family="Arial" font-size="16" text-anchor="middle">หน้าล็อกอิน</text>
+    <rect x="70" y="100" width="160" height="30" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="80" y="120" font-family="Arial" font-size="12">อีเมล</text>
+    <rect x="70" y="140" width="160" height="30" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="80" y="160" font-family="Arial" font-size="12">รหัสผ่าน</text>
+    <rect x="100" y="180" width="100" height="30" fill="#4285f4" stroke="#000000" stroke-width="1" />
+    <text x="150" y="200" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">
+        เข้าสู่ระบบ</text>
+
+    <!-- หน้าหลัก -->
+    <rect x="300" y="50" width="200" height="300" fill="#f0f0f0" stroke="#000000" stroke-width="2" />
+    <text x="400" y="80" font-family="Arial" font-size="16" text-anchor="middle">หน้าหลัก</text>
+    <line x1="300" y1="100" x2="500" y2="100" stroke="#000000" stroke-width="1" />
+    <text x="310" y="120" font-family="Arial" font-size="12">รายการ 1: +500 บาท</text>
+    <text x="310" y="140" font-family="Arial" font-size="12">รายการ 2: -200 บาท</text>
+    <text x="310" y="160" font-family="Arial" font-size="12">รายการ 3: +1000 บาท</text>
+    <circle cx="480" cy="330" r="15" fill="#4285f4" />
+    <text x="480" y="335" font-family="Arial" font-size="20" fill="#ffffff" text-anchor="middle">+</text>
+
+    <!-- หน้าเพิ่มรายการ -->
+    <rect x="550" y="50" width="200" height="300" fill="#f0f0f0" stroke="#000000" stroke-width="2" />
+    <text x="650" y="80" font-family="Arial" font-size="16" text-anchor="middle">เพิ่มรายการ</text>
+    <rect x="570" y="100" width="160" height="30" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="580" y="120" font-family="Arial" font-size="12">จำนวนเงิน</text>
+    <rect x="570" y="140" width="160" height="30" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="580" y="160" font-family="Arial" font-size="12">คำอธิบาย</text>
+    <rect x="570" y="180" width="160" height="30" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="580" y="200" font-family="Arial" font-size="12">ประเภท: รายรับ/รายจ่าย</text>
+    <rect x="600" y="220" width="100" height="30" fill="#4285f4" stroke="#000000" stroke-width="1" />
+    <text x="650" y="240" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">
+        บันทึก</text>
+</svg>
